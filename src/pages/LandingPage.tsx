@@ -8,7 +8,7 @@ export const LandingPage = () => {
         <main className="min-h-screen bg-light dark:bg-dark overflow-x-hidden transition-colors" >
             <nav className="h-[10vh] flex items-center justify-around" >
                 <h1 className="text-logo font-bold text-[28px] lg:text-[36px]">YOUSAC</h1>
-                <Link className="text-black dark:text-white font-bold text-[12px] lg:text-[16px] hover:text-gray-100" to="/auth/login">
+                <Link className="text-black dark:text-white font-bold text-[12px] lg:text-[16px] hover:text-gray-100" to="/login">
                     Iniciar sesión
                 </Link>
             </nav>
