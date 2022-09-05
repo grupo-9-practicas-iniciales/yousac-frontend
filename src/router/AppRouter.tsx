@@ -1,14 +1,32 @@
 import { Routes, Route } from 'react-router-dom'
-import { LandingPage } from '../pages';
+import { useCheckAuth } from '../hooks';
+import { LandingPage, LoginPage, MainAppPage } from '../pages';
+import { PublicRoute, PrivateRoute } from './';
 
 export const AppRouter = () => {
 
-  // ! Validate the auth state
+  useCheckAuth();
 
   return (
     <Routes>
-      <Route path='/auth/login' element={<></>} />
-      <Route path='/*' element={<LandingPage />} />
+
+      <Route path='/login' element={
+        <PublicRoute>
+          <LoginPage />
+        </PublicRoute>
+      } />
+
+      <Route path='/app' element={
+        <PrivateRoute>
+          <MainAppPage />
+        </PrivateRoute>
+      } />
+
+      <Route path='/*' element={
+        <PublicRoute>
+          <LandingPage />
+        </PublicRoute>
+      } />
     </Routes>
   )
 }
