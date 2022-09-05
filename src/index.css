@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Other fonts */
+
+/* font-family: poppins,sans-serif;
+font-weight: 300;
+font-style: normal;
+
+font-family: poppins,sans-serif;
+font-weight: 300;
+font-style: normal;
+
+font-family: poppins,sans-serif;
+font-weight: 400;
+font-style: normal;
+
+font-family: poppins,sans-serif;
+font-weight: 700;
+font-style: italic;
+
+font-family: poppins,sans-serif;
+font-weight: 700;
+font-style: normal; */
+
+@layer base {
+  html {
+    font-family: poppins,sans-serif;
+    font-style: normal;
+    overflow-x: hidden;
+  }
+}
+
 @layer utilities {
   .bg-info-gradient {
     @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC];
@@ -26,5 +56,9 @@
   }
   .bg-purple-gradient-2 {
     @apply bg-gradient-to-r from-[#AA076B] to-[#61045F];
+  }
+  .text-logo{
+    @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC] bg-clip-text;
+    color: transparent;
   }
 }
