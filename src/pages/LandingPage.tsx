@@ -3,22 +3,34 @@ import { Waves1SVG, RocketSVG } from "../assets";
 import { DownArrowIcon } from "../assets/icons/DownArrowIcon";
 import { ToogleThemeButton } from "../components/theme/ToogleThemeButton";
 import { Avatar, Button } from "../components/ui";
+import { Input } from "../components/ui/input/Input";
 import { User } from "../context/auth";
+import { useForm } from "../hooks/useForm";
 
 const testInitialUser2: User = {
   names: "Jorge",
   lastnames: "Garcia",
-  email: "",
+  email: "a",
   idStudent: "12321",
   idUser: "asdada",
   token: "",
 };
 
-const testFunction = () => {
-  console.log("test");
+const formInitialState = {
+  email: "",
+};
+
+type FormState = {
+  email: string;
 };
 
 export const LandingPage = () => {
+  const { onInputChange, email } = useForm<FormState>(formInitialState);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(email);
+  };
   return (
     <main className="min-h-screen bg-light dark:bg-dark overflow-x-hidden transition-colors">
       <nav className="h-[10vh] flex items-center justify-around">
@@ -49,13 +61,19 @@ export const LandingPage = () => {
           viewBox="0 0 300 100"
         />
       </div>
-      <Button
-        text="Hola"
-        variant="secondary"
-        className="mx-3 w-32"
-        onClick={testFunction}
-      />
       <ToogleThemeButton fab={true} />
+      <div>
+        <form action="" onSubmit={onSubmit}>
+          <Button text="Hola" variant="secondary" className="mx-3 w-32" />
+          <Input
+            className="w-1/2"
+            name="email"
+            onChange={onInputChange}
+            value={email}
+            placeholder="Email"
+          />
+        </form>
+      </div>
     </main>
   );
 };
