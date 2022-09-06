@@ -26,9 +26,19 @@ font-style: normal; */
 
 @layer base {
   html {
-    font-family: poppins,sans-serif;
+    font-family: poppins, sans-serif;
     font-style: normal;
     overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .avatar-option-menu {
+    @apply flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-light-5/[.70] dark:hover:bg-primary-dark-3/[.70] hover:dark:text-white;
+  }
+
+  .avatar-isUserActive {
+    @apply bg-success-2 w-[10px] h-[10px] border-[2px] border-light dark:border-dark  absolute top-[-1px] right-[2px] rounded-full;
   }
 }
 
@@ -57,7 +67,7 @@ font-style: normal; */
   .bg-purple-gradient-2 {
     @apply bg-gradient-to-r from-[#AA076B] to-[#61045F];
   }
-  .text-logo{
+  .text-logo {
     @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC] bg-clip-text;
     color: transparent;
   }

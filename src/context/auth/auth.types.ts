@@ -1,6 +1,6 @@
 export interface AuthState {
     status: Status;
-    user: User | null;
+    user: User;
     errorMsg: string | null
 }
 
