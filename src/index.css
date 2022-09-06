@@ -34,7 +34,7 @@ font-style: normal; */
 
 @layer components {
   .avatar-option-menu {
-    @apply flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-light-5/[.70] dark:hover:bg-primary-dark-3/[.70] hover:dark:text-white;
+    @apply flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-light-5/[.70] dark:hover:bg-primary-dark-3/[.70] transition-colors duration-300 hover:dark:text-white;
   }
 
   .avatar-isUserActive {
