@@ -21,7 +21,7 @@ export const Input = ({
       className={
         className +
         " " +
-        "rounded bg-white border border-primary-light-3 dark:text-white dark:placeholder:text-gray-200 focus:outline-none h-9 text-xs px-4 md:text-sm dark:bg-dark"
+        "rounded bg-white border border-primary-light-3 dark:placeholder:text-gray-200 focus:outline-none h-9 text-xs px-4 md:text-sm dark:bg-dark"
       }
       placeholder={placeholder}
     />

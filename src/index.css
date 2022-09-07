@@ -30,6 +30,22 @@ font-style: normal; */
     font-style: normal;
     overflow-x: hidden;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  li,
+  span,
+  input,
+  textarea,
+  button {
+    @apply dark:text-white;
+  }
 }
 
 @layer components {

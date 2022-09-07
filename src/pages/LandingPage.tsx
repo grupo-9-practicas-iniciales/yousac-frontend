@@ -22,7 +22,7 @@ export const LandingPage = () => {
           YOUSAC
         </h1>
         <Link
-          className="text-black dark:text-white font-bold text-[12px] lg:text-[16px] hover:text-gray-100"
+          className="text-black font-bold text-[12px] lg:text-[16px] hover:text-gray-100"
           to="/auth/login"
         >
           Iniciar sesión
@@ -31,7 +31,7 @@ export const LandingPage = () => {
       </nav>
       <section className="h-[70vh] flex flex-col gap-y-8 mt-10">
         <RocketSVG className="w-full h-full " viewBox="0 0 326 239" />
-        <h2 className="text-black dark:text-white text-center text-[16px] lg:text-[22px]">
+        <h2 className="text-black text-center text-[16px] lg:text-[22px]">
           Las mejores Recomendaciones
         </h2>
         <div className="flex justify-center items-center">
