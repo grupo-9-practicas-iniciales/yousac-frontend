@@ -23,7 +23,7 @@ export const LandingPage = () => {
         </h1>
         <Link
           className="text-black font-bold text-[12px] lg:text-[16px] hover:text-gray-100"
-          to="/auth/login"
+          to="/login"
         >
           Iniciar sesión
         </Link>

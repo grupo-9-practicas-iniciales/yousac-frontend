@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button, Input, ToogleThemeButton } from "../components";
-import {
-  BubbleDark,
-  BubbleLight,
-  BubbleDarkTiny,
-  BubbleLightTiny,
-} from "../assets";
+import { BubblesDark, BubblesLight } from "../assets";
 
 import { useAuthStore, useForm } from "../hooks";
 
@@ -68,10 +63,8 @@ export const LoginPage = () => {
         </Link>
       </div>
       <ToogleThemeButton fab={true} />
-      <BubbleDark />
-      <BubbleLight />
-      <BubbleDarkTiny />
-      <BubbleLightTiny />
+      <BubblesDark />
+      <BubblesLight />
     </div>
   );
 };

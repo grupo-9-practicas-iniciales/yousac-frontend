@@ -1,8 +1,6 @@
 //  * SVGS
-export * from "./svg/BubbleDarkTiny";
-export * from "./svg/BubbleDark";
-export * from "./svg/BubbleLightTiny";
-export * from "./svg/BubbleLight";
+export * from "./svg/BubblesDark";
+export * from "./svg/BubblesLight";
 export * from "./svg/RocketSVG";
 export * from "./svg/Waves1SVG";
 
