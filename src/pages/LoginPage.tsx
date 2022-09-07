@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { Button, Input, ToogleThemeButton } from "../components";
 import { BubblesDark, BubblesLight } from "../assets";
 
-import { useAuthStore, useForm } from "../hooks";
+import { useForm } from "../hooks";
+import { useAuthStore } from "../hooks/useAuthStore";
+import { ApiAuthRequest } from "../api/api.types";
 
 const formInitialState = {
   email: "",
@@ -12,33 +14,38 @@ const formInitialState = {
 type FormState = typeof formInitialState;
 
 export const LoginPage = () => {
+  const { startLogin } = useAuthStore();
+
   const { onInputChange, email, password } =
     useForm<FormState>(formInitialState);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email, password);
+    const credentials: ApiAuthRequest = { email, password };
+    startLogin(credentials);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
+    <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
       <h1>Iniciar Sesión</h1>
       <form
         className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2"
         onSubmit={onSubmit}
       >
         <Input
-          placeholder="Email"
+          label="Email"
+          placeholder="example@gmail.com"
           name="email"
           value={email}
-          className="w-full"
+          classStyles="w-full"
           onChange={onInputChange}
         />
         <Input
+          label="Contraseña"
           placeholder="Password"
           name="password"
           value={password}
-          className="w-full"
+          classStyles="w-full"
           onChange={onInputChange}
         />
         <Button text="Iniciar Sesión" variant="secondary" className="w-full" />
@@ -65,6 +72,6 @@ export const LoginPage = () => {
       <ToogleThemeButton fab={true} />
       <BubblesDark />
       <BubblesLight />
-    </div>
+    </main>
   );
 };

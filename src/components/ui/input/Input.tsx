@@ -1,29 +1,35 @@
 type Props = {
+  label?: string;
   placeholder: string;
-  className?: string;
+  classStyles?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   name: string;
 };
 
 export const Input = ({
+  label,
   placeholder,
-  className,
+  classStyles,
   onChange,
   value,
   name,
 }: Props) => {
+  const classNames = `px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light-1 focus:border-transparent dark:bg-dark dark:text-white ${classStyles}`;
   return (
-    <input
-      onChange={onChange}
-      value={value}
-      name={name}
-      className={
-        className +
-        " " +
-        "rounded bg-white border border-primary-light-3 dark:placeholder:text-gray-200 focus:outline-none h-9 text-xs px-4 md:text-sm dark:bg-dark"
-      }
-      placeholder={placeholder}
-    />
+    <div className="flex flex-col w-full">
+      {label && (
+        <label className="text-xs md:text-sm dark:text-white" htmlFor={name}>
+          {label}
+        </label>
+      )}
+      <input
+        onChange={onChange}
+        value={value}
+        name={name}
+        className={`${classNames}`}
+        placeholder={placeholder}
+      />
+    </div>
   );
 };
