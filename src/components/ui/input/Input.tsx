@@ -15,11 +15,13 @@ export const Input = ({
   value,
   name,
 }: Props) => {
-  const classNames = `px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light-1 focus:border-transparent dark:bg-dark dark:text-white ${classStyles}`;
   return (
     <div className="flex flex-col w-full">
       {label && (
-        <label className="text-xs md:text-sm dark:text-white" htmlFor={name}>
+        <label
+          className="text-xs md:text-sm mb-1 dark:text-white"
+          htmlFor={name}
+        >
           {label}
         </label>
       )}
@@ -27,7 +29,11 @@ export const Input = ({
         onChange={onChange}
         value={value}
         name={name}
-        className={`${classNames}`}
+        className={
+          classStyles +
+          " " +
+          " px-4 py-2 text-xs md:text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light-1 focus:border-transparent dark:bg-dark dark:text-white"
+        }
         placeholder={placeholder}
       />
     </div>
