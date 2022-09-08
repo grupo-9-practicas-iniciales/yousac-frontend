@@ -1,3 +1,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Other fonts */
+
+/* font-family: poppins,sans-serif;
+font-weight: 300;
+font-style: normal;
+
+font-family: poppins,sans-serif;
+font-weight: 300;
+font-style: normal;
+
+font-family: poppins,sans-serif;
+font-weight: 400;
+font-style: normal;
+
+font-family: poppins,sans-serif;
+font-weight: 700;
+font-style: italic;
+
+font-family: poppins,sans-serif;
+font-weight: 700;
+font-style: normal; */
+
+@layer base {
+  html {
+    font-family: poppins, sans-serif;
+    font-style: normal;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .avatar-option-menu {
+    @apply flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-light-5/[.70] dark:hover:bg-primary-dark-3/[.70] transition-colors duration-300 hover:dark:text-white;
+  }
+
+  .avatar-isUserActive {
+    @apply bg-success-2 w-[10px] h-[10px] border-[2px] border-light dark:border-dark  absolute top-[-1px] right-[2px] rounded-full;
+  }
+}
+
+@layer utilities {
+  .bg-info-gradient {
+    @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC];
+  }
+  .bg-error-gradient {
+    @apply bg-gradient-to-r from-[#FF512F] to-[#DD2476];
+  }
+  .bg-warning-gradient {
+    @apply bg-gradient-to-r from-[#FF8008] to-[#FFC837];
+  }
+  .bg-success-gradient {
+    @apply bg-gradient-to-r from-[#34E89E] to-[#0F3443];
+  }
+  .bg-primary-light-gradient {
+    @apply bg-gradient-to-r from-[#1488CC] to-[#2B32B2];
+  }
+  .bg-primary-dark-gradient {
+    @apply bg-gradient-to-r from-[#5433FF] to-[#00E6F6];
+  }
+  .bg-purple-gradient {
+    @apply bg-gradient-to-r from-[#9400D3] to-[#4B0082];
+  }
+  .bg-purple-gradient-2 {
+    @apply bg-gradient-to-r from-[#AA076B] to-[#61045F];
+  }
+  .text-logo {
+    @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC] bg-clip-text;
+    color: transparent;
+  }
+}
