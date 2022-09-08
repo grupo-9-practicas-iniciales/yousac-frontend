@@ -23,6 +23,15 @@ Despues de eso puedes correr la aplicación con:
 > npm run dev
 ```
 
+Para hacer un breve resumen estaremos trabjando con estas librerias
+
+- [React Router Dom](https://reactrouter.com/en/main)
+- [Headless UI](https://headlessui.com/)
+- [Tailwind](https://tailwindcss.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+Estamos haciendo el diseño de esta página en figma, puedes verlo [aquí](https://www.figma.com/file/JcvdtGmKldAlglczctJRad/YOUSAC-APP?node-id=0%3A1)
+
 ## Convenciones
 
 ### Branches
@@ -35,23 +44,27 @@ Puedes tomar alguno de los issues del repositorio siempre que alguien no esté t
 feature/nombre-issue-<numero-issue>
 ```
 
+* Recuerda crear la nueva rama apartir de la rama `develop` 
+
+* Cuando termines la funcionalidad puedes crear una pull request, selecciona que haga merge con `develop` y en la descripción puedes escribir `closes #<numero-issue>` 
+
 * Puedes ver el [Projecto](https://github.com/grupo-9-practicas-iniciales/informe-4-frontend/projects) del repositorio para saber en que se está trabajando actualmente.
 
-* Antes de hacer push al el repositorio es recomendable hacer el build, se hace de la siguente manera `npm run build`
+* Antes de hacer push al el repositorio es recomendable hacer el build para verificar que nada falle, se hace de la siguente manera `npm run build`
 
 * Verifica siempre la rama en la que estas trajando 😔
+
 
 ### Commits
 
 El nombre de los commits se debe hacer de esta manera
 
 ```
-[ ADD/FIX ] <breve descripción de lo hecho>
+[ ADD/FIX/UPDATE ] <breve descripción de lo hecho>
 ```
 
-* Puedes escoger entre `ADD` o `FIX` en función de qué estes haciendo
+* Puedes escoger entre `ADD`, `UPDATE` o `FIX` en función de qué estes haciendo
 
-Luego de que termines con la funcionalidad puedes crear una pull request que apuntará siempre a la rama `develop` para que posteriomente con el equipo se analice su merge.
 
 ## Producción
 

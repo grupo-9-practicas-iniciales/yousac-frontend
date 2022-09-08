@@ -12,7 +12,7 @@ export const ToogleThemeButton = ({ fab = false }: ToogleThemeButtonProps) => {
     const { darkModeEnabled, toogleDarkMode } = useTheme();
 
     return (
-        <div onClick={() => toogleDarkMode()}
+        <button onClick={() => toogleDarkMode()}
             className={`
             z-50
         cursor-pointer
@@ -35,6 +35,6 @@ export const ToogleThemeButton = ({ fab = false }: ToogleThemeButtonProps) => {
                         <SunIcon className="text-warning-light-4 text-[20px] lg:text-[25px]" />
                     )
             }
-        </div>
+        </button>
     )
 }
