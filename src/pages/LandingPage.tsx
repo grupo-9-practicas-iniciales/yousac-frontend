@@ -46,7 +46,6 @@ export const LandingPage = () => {
         />
       </div>
       <ToogleThemeButton fab={true} />
-      <div></div>
     </main>
   );
 };

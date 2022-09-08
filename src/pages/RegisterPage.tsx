@@ -32,7 +32,9 @@ export const RegisterPage = () => {
 
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
-      <h1>Regístrate</h1>
+      <h1 className="text-3xl font-bold text-primary-light-1 dark:text-white">
+        Regístrate
+      </h1>
       <form
         className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2"
         onSubmit={onSubmit}
@@ -86,7 +88,7 @@ export const RegisterPage = () => {
           classStyles="w-full"
           onChange={onInputChange}
         />
-        
+
         <Button text="Registrate" variant="secondary" className="w-full" />
       </form>
       <div className="flex flex-col justify-center text-center text-xs tracking-wide">

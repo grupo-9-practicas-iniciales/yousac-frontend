@@ -6,7 +6,7 @@ const BubblesLight = (props: Props) => (
   <>
     {/* Tiny */}
     <svg
-      className="absolute dark:hidden -top-10 md:top-24 right-8 md:right-16 w-[90px] md:w-[120px] rotate-[140deg]"
+      className="absolute dark:hidden -top-10 md:top-24 right-8 md:right-14 w-[90px] md:w-[120px] rotate-[140deg]"
       width={159}
       height={159}
       viewBox="0 0 159 159"
@@ -54,8 +54,9 @@ const BubblesLight = (props: Props) => (
         </radialGradient>
       </defs>
     </svg>
+    {/* Large */}
     <svg
-      className="absolute dark:hidden -top-36 md:top-0 -left-16 md:left-0 w-[210px] md:w-[250px] rotate-[140deg]"
+      className="absolute dark:hidden -top-40 md:top-0 -left-24 md:left-0 w-[210px] md:w-[250px] rotate-[140deg]"
       width={374}
       height={374}
       viewBox="0 0 374 374"
