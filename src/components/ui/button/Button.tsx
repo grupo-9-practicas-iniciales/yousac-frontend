@@ -1,8 +1,8 @@
 type Props = {
-  text: string;
   onClick?: () => void;
   variant?: "primary" | "secondary";
   className?: string;
+  children?: React.ReactNode;
 };
 
 const primaryStyles =
@@ -11,10 +11,10 @@ const secondaryStyles =
   "dark:bg-primary-light-gradient dark:hover:opacity-[.87]";
 
 export const Button = ({
-  text,
   onClick,
   variant = "primary",
   className,
+  children,
 }: Props) => {
   return (
     <button
@@ -26,7 +26,7 @@ export const Button = ({
       }
       onClick={onClick}
     >
-      {text}
+      {children}
     </button>
   );
 };

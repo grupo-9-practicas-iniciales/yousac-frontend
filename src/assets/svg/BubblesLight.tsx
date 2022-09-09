@@ -6,7 +6,7 @@ const BubblesLight = (props: Props) => (
   <>
     {/* Tiny */}
     <svg
-      className="absolute dark:hidden -top-7 md:top-[95px] right-5 md:right-[36px] w-[95px] md:w-[124px] rotate-[140deg]"
+      className="absolute dark:hidden -top-7 md:top-[106px] right-5 md:right-[33px] w-[95px] md:w-[124px] -rotate-[160deg]"
       width={159}
       height={159}
       viewBox="0 0 159 159"

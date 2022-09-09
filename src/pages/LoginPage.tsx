@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Input, ToogleThemeButton } from "../components";
+import { Button, TextField, ToogleThemeButton } from "../components";
 import { BubblesDark, BubblesLight } from "../assets";
 
 import { useForm } from "../hooks";
@@ -32,7 +32,7 @@ export const LoginPage = () => {
         className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2"
         onSubmit={onSubmit}
       >
-        <Input
+        <TextField
           label="Email"
           placeholder="example@gmail.com"
           name="email"
@@ -40,7 +40,7 @@ export const LoginPage = () => {
           classStyles="w-full"
           onChange={onInputChange}
         />
-        <Input
+        <TextField
           label="Contraseña"
           placeholder="Password"
           name="password"
@@ -48,7 +48,9 @@ export const LoginPage = () => {
           classStyles="w-full"
           onChange={onInputChange}
         />
-        <Button text="Iniciar Sesión" variant="secondary" className="w-full" />
+        <Button variant="secondary" className="w-full">
+          Iniciar Sesión
+        </Button>
       </form>
       <div className="flex flex-col justify-center text-center text-xs tracking-wide">
         <p className="mt-6">
