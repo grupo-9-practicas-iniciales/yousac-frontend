@@ -1,3 +1,4 @@
+import { Field } from "formik";
 type Props = {
   autoComplete?: string;
   classStyles?: string;
@@ -15,8 +16,7 @@ export const TextField = ({
   classStyles,
   name,
   type,
-}: // onChange,
-Props) => {
+}: Props) => {
   return (
     <div className="flex flex-col w-full">
       {label && (
@@ -27,7 +27,7 @@ Props) => {
           {label}
         </label>
       )}
-      <input
+      <Field
         type={type}
         name={name}
         autoComplete={autoComplete}
