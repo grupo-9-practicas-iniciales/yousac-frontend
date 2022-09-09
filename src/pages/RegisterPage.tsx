@@ -1,6 +1,6 @@
 import { Button, TextField, ToogleThemeButton } from "../components";
 
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { BubblesDark, BubblesLight } from "../assets";
