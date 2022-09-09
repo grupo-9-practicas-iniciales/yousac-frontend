@@ -1,6 +1,9 @@
+import { Button, TextField, ToogleThemeButton } from "../components";
+
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { Button } from "../components";
+
+import { BubblesDark, BubblesLight } from "../assets";
 
 const formInitialState = {
   idStudent: "",
@@ -11,96 +14,147 @@ const formInitialState = {
   confirmPassword: "",
 };
 
+const registerFormSchema = Yup.object().shape({
+  idStudent: Yup.number()
+    .required("El número de identificación es requerido")
+    .positive("El número de identificación no puede ser negativo")
+    .integer("El número de identificación debe ser un número entero")
+    .test(
+      "len",
+      "El número de identificación debe tener 9 dígitos",
+      (val) => val?.toString().length === 9
+    ),
+  names: Yup.string()
+    .required("Campo Requerido")
+    .min(3, "Minimo 3 caracteres")
+    .max(50, `Máximo 50 caracteres`),
+  lastNames: Yup.string()
+    .required("Campo Requerido")
+    .min(3, "Minimo 3 caracteres")
+    .max(50, `Máximo 50 caracteres`),
+  email: Yup.string().required("Campo Requerido").email("Correo no válido"),
+  password: Yup.string()
+    .required("Campo Requerido")
+    .min(8, "Minimo 8 caracteres")
+    .max(50, `Máximo 50 caracteres`),
+  confirmPassword: Yup.string()
+    .required("Campo Requerido")
+    .oneOf([Yup.ref("password"), null], "Las contraseñas no coinciden"),
+});
+
 type FormState = typeof formInitialState;
 
 export const RegisterPage = () => {
-  const formSchema = Yup.object().shape({
-    Email: Yup.string()
-      .required("Campo Requerido")
-      .email("Correo Electronico Invalido")
-      .max(255, `Máximo 255 caracteres`),
-    UserName: Yup.string()
-      .min(5, `Mínimo 5 caracteres`)
-      .max(25, `Máximo 25 caracteres`)
-      .required("Campo Requerido"),
-    Password: Yup.string()
-      .required("Campo Requerido")
-      .min(5, `Mínimo 5 caracteres`),
-    MobilePhone: Yup.number()
-      .required("Campo Requerido")
-      .min(8, `Mínimo  8 caracteres`),
-  });
-
-  const onSubmit = (values: FormState) => {
-    console.log(values);
+  const onSubmit = ({
+    idStudent,
+    names,
+    lastNames,
+    email,
+    password,
+    confirmPassword,
+  }: FormState) => {
+    console.log(
+      typeof idStudent,
+      names,
+      lastNames,
+      email,
+      password,
+      confirmPassword
+    );
   };
 
   return (
-    <>
+    <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
+      <h1 className="text-3xl font-bold text-primary-light-1 mb-5">
+        Regístrate
+      </h1>
       <Formik
         initialValues={formInitialState}
-        validationSchema={formSchema}
+        validationSchema={registerFormSchema}
         onSubmit={onSubmit}
       >
-        <Form>
-          <label htmlFor="UserName">Nombre Usuario: </label>
-          <Field
-            className="form-control"
-            name="UserName"
-            placeholder=""
-            type="text"
-          />
-          <ErrorMessage
-            name="UserName"
-            component="div"
-            className="text-error-light-1 bg-dark"
-          />
-          <label htmlFor="Email">Correo Electronico: </label>
-          <Field
-            className="form-control"
-            name="Email"
-            placeholder=""
-            type="email"
-          />
-          <ErrorMessage
-            name="Email"
-            component="div"
-            className="field-error text-danger"
-          />
-          <label htmlFor="Password">Contraseña: </label>
-          <Field
-            className="form-control"
-            name="Password"
-            placeholder=""
-            type="password"
-          />
-          <ErrorMessage
-            name="Password"
-            component="div"
-            className="field-error text-danger"
-          />
-          <label htmlFor="MobilePhone">Teléfono: </label>
-          <Field
-            className="form-control"
-            name="MobilePhone"
-            placeholder=""
-            type="number"
-          />
-          <ErrorMessage
-            name="MobilePhone"
-            component="div"
-            className="field-error text-danger"
-          />
+        {({ errors, touched }) => (
+          <Form className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2 overflow-x-auto">
+            <div className="w-full">
+              <TextField
+                label="Registro Académico"
+                placeholder="202100000"
+                name="idStudent"
+                type="text"
+              />
+              {errors.idStudent && touched.idStudent ? (
+                <ErrorMessage name="idStudent" />
+              ) : null}
+            </div>
+            <div className="w-full">
+              <TextField
+                label="Nombres"
+                placeholder="Juan"
+                name="names"
+                type="text"
+              />
+              {errors.names && touched.names ? (
+                <ErrorMessage name="names" />
+              ) : null}
+            </div>
+            <div className="w-full">
+              <TextField
+                label="Apellidos"
+                placeholder="Perez"
+                name="lastNames"
+                type="text"
+              />
+              {errors.lastNames && touched.lastNames ? (
+                <ErrorMessage name="lastNames" />
+              ) : null}
+            </div>
+            <div className="w-full">
+              <TextField
+                label="Correo Electrónico"
+                placeholder="tu@ejemplo.com"
+                name="email"
+                type="email"
+              />
+              {errors.email && touched.email ? (
+                <ErrorMessage name="email" />
+              ) : null}
+            </div>
+            <div className="w-full">
+              <TextField
+                label="Contraseña"
+                placeholder=""
+                name="password"
+                type="password"
+              />
+              {errors.password && touched.password ? (
+                <ErrorMessage name="password" />
+              ) : null}
+            </div>
+            <div className="w-full">
+              <TextField
+                label="Confirmar Contraseña"
+                placeholder=""
+                name="confirmPassword"
+                type="password"
+              />
+              {errors.confirmPassword && touched.confirmPassword ? (
+                <ErrorMessage name="confirmPassword" />
+              ) : null}
+            </div>
 
-          <Button
-            variant="primary"
-            className="mr-1 mb-1 btn-block"
-            type="submit"
-          >
-            Guardar
-          </Button>
-        </Form>
+            <Button
+              variant="secondary"
+              className="mr-1 mb-1 btn-block"
+              type="submit"
+            >
+              Guardar
+            </Button>
+          </Form>
+        )}
       </Formik>
-    </>
+      <BubblesLight />
+      <BubblesDark />
+      <ToogleThemeButton fab={true} />
+    </main>
   );
 };
