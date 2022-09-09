@@ -5,4 +5,4 @@ export * from "./ui/textField/TextField";
 
 // Extra
 export * from "./theme/ToogleThemeButton";
-export * from "./ui/spinner/AuthSpinner";
+export * from "./ui/spinner/Spinner";

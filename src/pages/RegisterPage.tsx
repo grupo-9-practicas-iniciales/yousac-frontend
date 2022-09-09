@@ -1,4 +1,4 @@
-import { Button, TextField, ToogleThemeButton } from "../components";
+import { Button, Spinner, TextField, ToogleThemeButton } from "../components";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { BubblesDark, BubblesLight } from "../assets";
 import { Link } from "react-router-dom";
 import { ErrorMessageField } from "../components/ui/textField/ErrorMessageField";
+import { useRegister } from "../hooks";
 
 const formInitialState = {
   idStudent: "",
@@ -47,6 +48,18 @@ const registerFormSchema = Yup.object().shape({
 type FormState = typeof formInitialState;
 
 export const RegisterPage = () => {
+
+  const { isError, isLoading, startRegister, msg, errors: apiErrors } = useRegister();
+
+  // ? Change for loader in the submit button ?
+  if (isLoading) {
+    return (
+      <Spinner />
+    )
+  }
+
+  // ? Handle the error in alert ?
+
   const onSubmit = ({
     idStudent,
     names,
@@ -55,7 +68,15 @@ export const RegisterPage = () => {
     password,
     confirmPassword,
   }: FormState) => {
-    console.log(idStudent, names, lastNames, email, password, confirmPassword);
+
+    startRegister({
+      idStudent,
+      names,
+      lastnames: lastNames,
+      email,
+      password,
+      password2: confirmPassword,
+    });
   };
 
   return (
@@ -145,6 +166,18 @@ export const RegisterPage = () => {
               <Button variant="secondary" type="submit">
                 Guardar
               </Button>
+              {/* ?????? REMOVE THIS ??????  */}
+              {
+                msg
+                  ? <div className={`${isError ? 'text-error-light-3' : 'text-primary-light-1 dark:bg-primary-dark-1'} `}>
+                    <h1>{msg}</h1>
+                    {
+                      apiErrors.map((error, index) => (
+                        <p key={index}>{error.msg}</p>
+                      ))
+                    }
+                  </div> : <></>
+              }
             </Form>
           )}
         </Formik>

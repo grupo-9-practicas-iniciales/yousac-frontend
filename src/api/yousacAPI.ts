@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Change this for env variables
-const api_url = 'http://localhost:4000/api'
+const api_url = import.meta.env.VITE_API_URL
 
 const yousacApi = axios.create({
     baseURL: api_url
@@ -9,9 +9,11 @@ const yousacApi = axios.create({
 
 yousacApi.interceptors.request.use(config => {
 
+    console.log('seteando token')
+
     config.headers = {
         ...config.headers,
-        'auth-token': localStorage.getItem('token') || ''
+        'auth-token': localStorage.getItem('auth-token') || ''
     }
 
     return config

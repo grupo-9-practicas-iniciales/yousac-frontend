@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { AuthSpinner } from "../components";
+import { Spinner } from "../components";
 import { useCheckAuth } from "../hooks";
 import {
   LandingPage,
@@ -14,7 +14,7 @@ export const AppRouter = () => {
   const { status } = useCheckAuth();
 
   if (status === "checking") {
-    return <AuthSpinner />;
+    return <Spinner />;
   }
 
   return (

@@ -1,4 +1,4 @@
-import { useAuthStore } from "../hooks/useAuthStore";
+import { useAuthStore } from "../../hooks/useAuthStore";
 import { Navigate } from "react-router-dom";
 
 export const MainAppPage = () => {
@@ -6,5 +6,7 @@ export const MainAppPage = () => {
   if (!user) {
     return <Navigate to="/login" />;
   }
-  return <></>;
+  return <>
+    <h1>DASHBOARD PRINCIPAL</h1>
+  </>;
 };
