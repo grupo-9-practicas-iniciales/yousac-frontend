@@ -9,7 +9,7 @@ const testInitialUser2: User = {
   names: "Jorge",
   lastnames: "Garcia",
   email: "a",
-  idStudent: "12321",
+  idStudent: "123",
   idUser: "asdada",
   token: "",
 };
@@ -46,7 +46,6 @@ export const LandingPage = () => {
         />
       </div>
       <ToogleThemeButton fab={true} />
-      <div></div>
     </main>
   );
 };

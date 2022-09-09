@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Button, Input, ToogleThemeButton } from "../components";
-import { BubblesDark, BubblesLight } from "../assets";
+import { Formik, Form } from "formik";
 
-import { useForm } from "../hooks";
+import { Button, TextField, ToogleThemeButton } from "../components";
+
+import { BubblesDark, BubblesLight } from "../assets";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { ApiAuthRequest } from "../api/api.types";
 
@@ -16,11 +17,7 @@ type FormState = typeof formInitialState;
 export const LoginPage = () => {
   const { startLogin } = useAuthStore();
 
-  const { onInputChange, email, password } =
-    useForm<FormState>(formInitialState);
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = ({ email, password }: FormState) => {
     const credentials: ApiAuthRequest = { email, password };
     startLogin(credentials);
   };
@@ -28,28 +25,23 @@ export const LoginPage = () => {
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
       <h1>Iniciar Sesión</h1>
-      <form
-        className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2"
-        onSubmit={onSubmit}
-      >
-        <Input
-          label="Email"
-          placeholder="example@gmail.com"
-          name="email"
-          value={email}
-          classStyles="w-full"
-          onChange={onInputChange}
-        />
-        <Input
-          label="Contraseña"
-          placeholder="Password"
-          name="password"
-          value={password}
-          classStyles="w-full"
-          onChange={onInputChange}
-        />
-        <Button text="Iniciar Sesión" variant="secondary" className="w-full" />
-      </form>
+      <Formik initialValues={formInitialState} onSubmit={onSubmit}>
+        <Form className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2">
+          <TextField
+            label="Email"
+            placeholder="example@gmail.com"
+            name="email"
+          />
+          <TextField
+            label="Contraseña"
+            placeholder="Password"
+            name="password"
+          />
+          <Button variant="secondary" type="submit">
+            Iniciar Sesión
+          </Button>
+        </Form>
+      </Formik>
       <div className="flex flex-col justify-center text-center text-xs tracking-wide">
         <p className="mt-6">
           <span className="font-light text-primary-light-1">

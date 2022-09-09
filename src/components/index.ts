@@ -1,7 +1,7 @@
 // Base components
 export * from "./ui/avatar/Avatar";
 export * from "./ui/button/Button";
-export * from "./ui/input/Input";
+export * from "./ui/textField/TextField";
 
 // Extra
 export * from "./theme/ToogleThemeButton";
