@@ -1,9 +1,11 @@
 import { Button, TextField, ToogleThemeButton } from "../components";
 
-import { Formik, Form, ErrorMessage, Field } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { BubblesDark, BubblesLight } from "../assets";
+import { Link } from "react-router-dom";
+import { ErrorMessageField } from "../components/ui/textField/ErrorMessageField";
 
 const formInitialState = {
   idStudent: "",
@@ -53,18 +55,11 @@ export const RegisterPage = () => {
     password,
     confirmPassword,
   }: FormState) => {
-    console.log(
-      typeof idStudent,
-      names,
-      lastNames,
-      email,
-      password,
-      confirmPassword
-    );
+    console.log(idStudent, names, lastNames, email, password, confirmPassword);
   };
 
   return (
-    <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
+    <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]  overflow-y-auto">
       <h1 className="text-3xl font-bold text-primary-light-1 mb-5">
         Regístrate
       </h1>
@@ -74,16 +69,16 @@ export const RegisterPage = () => {
         onSubmit={onSubmit}
       >
         {({ errors, touched }) => (
-          <Form className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2 overflow-x-auto">
+          <Form className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2">
             <div className="w-full">
               <TextField
                 label="Registro Académico"
                 placeholder="202100000"
                 name="idStudent"
-                type="text"
+                type="number"
               />
               {errors.idStudent && touched.idStudent ? (
-                <ErrorMessage name="idStudent" />
+                <ErrorMessageField message={errors.idStudent} />
               ) : null}
             </div>
             <div className="w-full">
@@ -94,7 +89,7 @@ export const RegisterPage = () => {
                 type="text"
               />
               {errors.names && touched.names ? (
-                <ErrorMessage name="names" />
+                <ErrorMessageField message={errors.names} />
               ) : null}
             </div>
             <div className="w-full">
@@ -105,7 +100,7 @@ export const RegisterPage = () => {
                 type="text"
               />
               {errors.lastNames && touched.lastNames ? (
-                <ErrorMessage name="lastNames" />
+                <ErrorMessageField message={errors.lastNames} />
               ) : null}
             </div>
             <div className="w-full">
@@ -116,7 +111,7 @@ export const RegisterPage = () => {
                 type="email"
               />
               {errors.email && touched.email ? (
-                <ErrorMessage name="email" />
+                <ErrorMessageField message={errors.email} />
               ) : null}
             </div>
             <div className="w-full">
@@ -127,7 +122,7 @@ export const RegisterPage = () => {
                 type="password"
               />
               {errors.password && touched.password ? (
-                <ErrorMessage name="password" />
+                <ErrorMessageField message={errors.password} />
               ) : null}
             </div>
             <div className="w-full">
@@ -138,20 +133,29 @@ export const RegisterPage = () => {
                 type="password"
               />
               {errors.confirmPassword && touched.confirmPassword ? (
-                <ErrorMessage name="confirmPassword" />
+                <ErrorMessageField message={errors.confirmPassword} />
               ) : null}
             </div>
 
-            <Button
-              variant="secondary"
-              className="mr-1 mb-1 btn-block"
-              type="submit"
-            >
+            <Button variant="secondary" type="submit">
               Guardar
             </Button>
           </Form>
         )}
       </Formik>
+      <div className="flex flex-col justify-center text-center text-xs tracking-wide">
+        <p className="mt-6">
+          <span className="font-light text-primary-light-1">
+            ¿Ya tienes cuenta?{" "}
+          </span>
+          <Link
+            to="/login"
+            className="font-semibold text-primary-light-1 font-base"
+          >
+            Inicia sesión aquí
+          </Link>{" "}
+        </p>
+      </div>
       <BubblesLight />
       <BubblesDark />
       <ToogleThemeButton fab={true} />
