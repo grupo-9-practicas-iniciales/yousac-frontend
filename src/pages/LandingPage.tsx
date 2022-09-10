@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { RocketSVG } from "../assets";
 import { DownArrowIcon } from "../assets/icons/DownArrowIcon";
-import { WavyFooter } from "../components";
-import { Avatar } from "../components/ui";
+import { WavyFooter, Avatar, Card, CardPost } from "../components";
 import { User } from "../context/auth";
 
 const testInitialUser2: User = {
@@ -27,7 +26,6 @@ export const LandingPage = () => {
           >
             Iniciar sesión
           </Link>
-          <Avatar user={testInitialUser2} />
         </nav>
         <section className="h-[70vh] flex flex-col gap-y-8 mt-10">
           <RocketSVG className="w-full h-full " viewBox="0 0 326 239" />
@@ -37,6 +35,9 @@ export const LandingPage = () => {
           <div className="flex justify-center items-center">
             <DownArrowIcon className="text-primary-light-1 dark:text-primary-dark-1 text-2xl lg:text-3xl" />
           </div>
+          <Card user={testInitialUser2} className="bottom-3">
+            <CardPost />
+          </Card>
         </section>
       </main>
       <WavyFooter />
