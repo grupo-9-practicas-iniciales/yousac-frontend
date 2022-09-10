@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Spinner } from "../components";
+import { Spinner, ToogleThemeButton } from "../components";
 import { useCheckAuth } from "../hooks";
 import {
   LandingPage,
@@ -9,6 +9,8 @@ import {
 } from "../pages";
 import { PublicRoute, PrivateRoute } from "./";
 import { RecoveryRouter } from "./RecoveryRouter";
+import { Toaster } from 'react-hot-toast';
+
 
 export const AppRouter = () => {
   const { status } = useCheckAuth();
@@ -18,51 +20,61 @@ export const AppRouter = () => {
   }
 
   return (
-    <Routes>
-      <Route
-        path="/login"
-        element={
-          <PublicRoute>
-            <LoginPage />
-          </PublicRoute>
-        }
-      />
+    <>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
 
-      <Route
-        path="/register"
-        element={
-          <PublicRoute>
-            <RegisterPage />
-          </PublicRoute>
-        }
-      />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
 
-      <Route
-        path="/recovery/*"
-        element={
-          <PublicRoute>
-            <RecoveryRouter />
-          </PublicRoute>
-        }
-      />
+        <Route
+          path="/recovery/*"
+          element={
+            <PublicRoute>
+              <RecoveryRouter />
+            </PublicRoute>
+          }
+        />
 
-      <Route
-        path="/app"
-        element={
-          <PrivateRoute>
-            <MainAppPage />
-          </PrivateRoute>
-        }
-      />
+        <Route
+          path="/app"
+          element={
+            <PrivateRoute>
+              <MainAppPage />
+            </PrivateRoute>
+          }
+        />
 
-      <Route
-        path="/*"
-        element={
-          <PublicRoute>
-            <LandingPage />
-          </PublicRoute>
+        <Route
+          path="/*"
+          element={
+            <PublicRoute>
+              <LandingPage />
+            </PublicRoute>
+          }
+        />
+      </Routes>
+      <Toaster
+        toastOptions={
+          {
+            className: 'bg-light dark:bg-darkContrast text-black dark:text-white',
+          }
         }
       />
-    </Routes>
+      <ToogleThemeButton fab={true} />
+    </>
   );
 };

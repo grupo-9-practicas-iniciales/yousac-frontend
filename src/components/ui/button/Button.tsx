@@ -4,6 +4,7 @@ type Props = {
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary";
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 const primaryStyles =
@@ -17,9 +18,11 @@ export const Button = ({
   type = "button",
   variant = "primary",
   onClick,
+  disabled = false,
 }: Props) => {
   return (
     <button
+      disabled={disabled}
       className={
         className +
         " " +

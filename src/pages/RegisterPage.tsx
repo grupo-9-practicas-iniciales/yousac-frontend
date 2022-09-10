@@ -1,4 +1,4 @@
-import { Button, Spinner, TextField, ToogleThemeButton } from "../components";
+import { Button, Spinner, TextField } from "../components";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -6,7 +6,8 @@ import * as Yup from "yup";
 import { BubblesDark, BubblesLight } from "../assets";
 import { Link } from "react-router-dom";
 import { ErrorMessageField } from "../components/ui/textField/ErrorMessageField";
-import { useRegister } from "../hooks";
+import { useApi } from "../hooks";
+import { ApiUserCreateRequest, APIUserCreateResponse } from "../api";
 
 const formInitialState = {
   idStudent: "",
@@ -49,16 +50,7 @@ type FormState = typeof formInitialState;
 
 export const RegisterPage = () => {
 
-  const { isError, isLoading, startRegister, msg, errors: apiErrors } = useRegister();
-
-  // ? Change for loader in the submit button ?
-  if (isLoading) {
-    return (
-      <Spinner />
-    )
-  }
-
-  // ? Handle the error in alert ?
+  const { isLoading, perfomFetch } = useApi<APIUserCreateResponse>();
 
   const onSubmit = ({
     idStudent,
@@ -69,13 +61,19 @@ export const RegisterPage = () => {
     confirmPassword,
   }: FormState) => {
 
-    startRegister({
+    const body: ApiUserCreateRequest = {
       idStudent,
       names,
       lastnames: lastNames,
       email,
       password,
       password2: confirmPassword,
+    }
+
+    perfomFetch({
+      url: "/user/create",
+      method: "post",
+      body
     });
   };
 
@@ -162,22 +160,9 @@ export const RegisterPage = () => {
                   ) : null}
                 </div>
               </div>
-
-              <Button variant="secondary" type="submit">
+              <Button disabled={isLoading} variant="secondary" type="submit">
                 Guardar
               </Button>
-              {/* ?????? REMOVE THIS ??????  */}
-              {
-                msg
-                  ? <div className={`${isError ? 'text-error-light-3' : 'text-primary-light-1 dark:bg-primary-dark-1'} `}>
-                    <h1>{msg}</h1>
-                    {
-                      apiErrors.map((error, index) => (
-                        <p key={index}>{error.msg}</p>
-                      ))
-                    }
-                  </div> : <></>
-              }
             </Form>
           )}
         </Formik>
@@ -196,7 +181,6 @@ export const RegisterPage = () => {
         </div>
         <BubblesLight />
         <BubblesDark />
-        <ToogleThemeButton fab={true} />
       </main>
     </>
   );

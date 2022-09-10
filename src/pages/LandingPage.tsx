@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Waves1SVG, RocketSVG } from "../assets";
 import { DownArrowIcon } from "../assets/icons/DownArrowIcon";
-import { ToogleThemeButton } from "../components/theme/ToogleThemeButton";
 import { Avatar } from "../components/ui";
 import { User } from "../context/auth";
 
@@ -10,8 +9,7 @@ const testInitialUser2: User = {
   lastnames: "Garcia",
   email: "a",
   idStudent: "123",
-  idUser: "asdada",
-  token: "",
+  idUser: 1,
 };
 
 export const LandingPage = () => {
@@ -45,7 +43,6 @@ export const LandingPage = () => {
           viewBox="0 0 300 100"
         />
       </div>
-      <ToogleThemeButton fab={true} />
     </main>
   );
 };

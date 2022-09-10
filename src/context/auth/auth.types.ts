@@ -1,4 +1,4 @@
-import { UserInterface } from "../../interfaces";
+import { UserInterface } from "../../api";
 
 export interface AuthState {
     status: Status;
