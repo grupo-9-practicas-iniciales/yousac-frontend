@@ -1,35 +1,18 @@
 import { UserInterface } from "../../../api/api.types";
-import { Avatar } from "../avatar/Avatar";
 
 type CardProps = {
   children: React.ReactNode;
-  user: UserInterface;
   className?: string;
 };
 
-const testUser: UserInterface = {
-  idUser: 1,
-  idStudent: "",
-  names: "",
-  lastnames: "",
-  email: "",
-};
-
-export const Card = ({ children, className, user }: CardProps) => {
+export const Card = ({ children, className }: CardProps) => {
   return (
     <div
       className={
         className +
-        `flex flex-col space-y-5 bg-primary-light-5/90 dark:bg-darkContrast m-6 min-w-min max-w-md p-5 rounded-md`
+        ` flex flex-col space-y-5 border border-gray-400 dark:border-none dark:bg-darkContrast/100 m-6 min-w-min max-w-sm md:max-w-md lg:max-w-lg p-5 rounded-md transition md:duration-300  md:hover:scale-105 md:hover:shadow-lg`
       }
     >
-      <div className="flex space-x-4">
-        <Avatar user={user} />
-        <div className="flex flex-col font-semibold text-center">
-          <h3>¿Recomendaciones para LFP?</h3>
-          <p className="text-gray-100"> Usuario - 28 de febrero de 2022 </p>
-        </div>
-      </div>
       {children}
     </div>
   );

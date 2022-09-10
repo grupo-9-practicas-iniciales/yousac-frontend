@@ -3,6 +3,7 @@ import { RocketSVG } from "../assets";
 import { DownArrowIcon } from "../assets/icons/DownArrowIcon";
 import { WavyFooter, Avatar, Card, CardPost } from "../components";
 import { User } from "../context/auth";
+import { CardUser } from "../components/ui/card/CardUser";
 
 const testInitialUser2: User = {
   names: "Jorge",
@@ -35,8 +36,11 @@ export const LandingPage = () => {
           <div className="flex justify-center items-center">
             <DownArrowIcon className="text-primary-light-1 dark:text-primary-dark-1 text-2xl lg:text-3xl" />
           </div>
-          <Card user={testInitialUser2} className="bottom-3">
-            <CardPost />
+          <Card>
+            <CardPost user={testInitialUser2} />
+          </Card>
+          <Card>
+            <CardUser user={testInitialUser2} />
           </Card>
         </section>
       </main>
