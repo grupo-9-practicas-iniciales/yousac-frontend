@@ -4,3 +4,4 @@ export * from './useCheckAuth'
 export * from "./useForm";
 export * from "./useRegister";
 export * from './useApi'
+export * from './useMediaQuery'
