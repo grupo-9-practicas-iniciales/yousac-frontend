@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ApiAuthLoginRequest, ApiAuthLoginResponse, ApiAuthRevalidateResponse, yousacApi } from "../api";
 
 import { AuthContext } from "../context/auth";
+import toast from 'react-hot-toast';
 
 export const useAuthStore = () => {
   const { status, user, errorMsg, checkingAuth, login, logout, clearErrorMsg } =
@@ -22,11 +23,15 @@ export const useAuthStore = () => {
 
       if (ok) {
         login(user, token);
+        toast.success("Bienvenido", {
+          icon: "👋",
+        });
         return;
       }
       logout(msg);
     } catch (error) {
       console.log(error);
+      toast.error("Credenciales incorrectas");
       logout("Error en la autenticación");
     }
   };

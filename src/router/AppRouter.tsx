@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Spinner, ToogleThemeButton } from "../components";
+import { Spinner } from "../components";
 import { useCheckAuth } from "../hooks";
 import {
   LandingPage,
@@ -9,8 +9,6 @@ import {
 } from "../pages";
 import { PublicRoute, PrivateRoute } from "./";
 import { RecoveryRouter } from "./RecoveryRouter";
-import { Toaster } from 'react-hot-toast';
-
 
 export const AppRouter = () => {
   const { status } = useCheckAuth();
@@ -67,14 +65,7 @@ export const AppRouter = () => {
           }
         />
       </Routes>
-      <Toaster
-        toastOptions={
-          {
-            className: 'bg-light dark:bg-darkContrast text-black dark:text-white',
-          }
-        }
-      />
-      <ToogleThemeButton fab={true} />
+
     </>
   );
 };

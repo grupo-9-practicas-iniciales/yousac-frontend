@@ -9,8 +9,6 @@ const yousacApi = axios.create({
 
 yousacApi.interceptors.request.use(config => {
 
-    console.log('seteando token')
-
     config.headers = {
         ...config.headers,
         'auth-token': localStorage.getItem('auth-token') || ''
