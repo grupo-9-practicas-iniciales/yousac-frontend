@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const Avatar = ({ user }: Props) => {
-  const { user: loguedUser } = useAuthStore();
+  const { user: loguedUser, startLogout } = useAuthStore();
   const displayUserName = user.names[0] + user.lastnames[0];
 
   return (
@@ -50,7 +50,7 @@ export const Avatar = ({ user }: Props) => {
 
                   {user.idStudent === loguedUser.idStudent && (
                     <div className="py-1">
-                      <Link to="/auth/login" className="avatar-option-menu">
+                      <Link to="/" onClick={() => startLogout()} className="avatar-option-menu">
                         <CgLogOff className="mr-2" />
                         Logout
                       </Link>

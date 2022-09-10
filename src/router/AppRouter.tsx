@@ -5,6 +5,7 @@ import {
   LandingPage,
   LoginPage,
   MainAppPage,
+  ProfilePage,
   RegisterPage,
 } from "../pages";
 import { PublicRoute, PrivateRoute } from "./";
@@ -44,6 +45,15 @@ export const AppRouter = () => {
             <PublicRoute>
               <RecoveryRouter />
             </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/profile/user/:idStudent"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
           }
         />
 

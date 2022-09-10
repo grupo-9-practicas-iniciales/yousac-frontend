@@ -13,7 +13,7 @@ export const YousacApp = () => {
       <Toaster
         toastOptions={
           {
-            className: 'bg-light dark:bg-darkContrast text-black dark:text-white text-xs md:text-sm',
+            className: 'bg-light dark:bg-darkContrast text-black dark:text-white text-xs md:text-sm xl:text-lg',
           }
         }
 

@@ -1,12 +1,19 @@
 import { useAuthStore } from "../hooks/useAuthStore";
-import { Navigate } from "react-router-dom";
+import { Navbar } from '../components/ui/navbar/Navbar';
+import { SearchSection, WavyFooter } from "../components";
 
 export const MainAppPage = () => {
   const { user } = useAuthStore();
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-  return <>
-    <h1>DASHBOARD PRINCIPAL</h1>
-  </>;
+
+  return (
+    <>
+      <main className="min-h-screen bg-white dark:bg-dark overflow-x-hidden transition-colors">
+        <Navbar user={user} />
+        <div className="flex flex-col justify-center items-center">
+          <SearchSection />
+        </div>
+      </main>
+      <WavyFooter />
+    </>
+  )
 };
