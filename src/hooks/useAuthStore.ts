@@ -1,29 +1,37 @@
 import { useContext } from "react";
+import { ApiAuthLoginRequest, ApiAuthLoginResponse, ApiAuthRevalidateResponse, yousacApi } from "../api";
 
-import { ApiAuthResponse, yousacApi, ApiAuthRequest } from "../api/";
 import { AuthContext } from "../context/auth";
+import toast from 'react-hot-toast';
 
 export const useAuthStore = () => {
   const { status, user, errorMsg, checkingAuth, login, logout, clearErrorMsg } =
     useContext(AuthContext);
 
-  const startLogin = async (userCredentials: ApiAuthRequest) => {
+
+
+  const startLogin = async (userCredentials: ApiAuthLoginRequest) => {
     try {
       checkingAuth();
 
-      const { data } = await yousacApi.post<ApiAuthResponse>(
+      const { data } = await yousacApi.post<ApiAuthLoginResponse>(
         "/auth",
         userCredentials
       );
 
-      if (data.ok) {
-        login(data.user);
-        localStorage.setItem("token", data.user.token);
+      const { user, token, ok, errors, msg } = data;
+
+      if (ok) {
+        login(user, token);
+        toast.success("Bienvenido", {
+          icon: "👋",
+        });
         return;
       }
-      logout(data.errorMsg);
+      logout(msg);
     } catch (error) {
       console.log(error);
+      toast.error("Credenciales incorrectas");
       logout("Error en la autenticación");
     }
   };
@@ -34,20 +42,16 @@ export const useAuthStore = () => {
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem("token");
 
-      if (token) {
-        const { data } = await yousacApi.post<ApiAuthResponse>(
-          "/auth/revalidate",
-          token
-        );
+      const { data } = await yousacApi.post<ApiAuthRevalidateResponse>("/auth/revalidate");
 
-        if (data.ok) {
-          login(data.user);
-          localStorage.setItem("token", data.user.token);
-          return;
-        }
+      const { user, token, ok } = data;
+
+      if (ok) {
+        login(user, token);
+        return;
       }
+
       logout(null);
     } catch (error) {
       console.log(error);

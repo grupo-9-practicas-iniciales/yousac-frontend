@@ -6,5 +6,7 @@ export const MainAppPage = () => {
   if (!user) {
     return <Navigate to="/login" />;
   }
-  return <></>;
+  return <>
+    <h1>DASHBOARD PRINCIPAL</h1>
+  </>;
 };

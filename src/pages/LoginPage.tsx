@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 
-import { Button, TextField, ToogleThemeButton } from "../components";
+import { Button, TextField } from "../components";
 
 import { BubblesDark, BubblesLight } from "../assets";
 import { useAuthStore } from "../hooks/useAuthStore";
-import { ApiAuthRequest } from "../api/api.types";
+import { ApiAuthLoginRequest } from "../api";
 
 const formInitialState = {
   email: "",
@@ -18,7 +18,7 @@ export const LoginPage = () => {
   const { startLogin } = useAuthStore();
 
   const onSubmit = ({ email, password }: FormState) => {
-    const credentials: ApiAuthRequest = { email, password };
+    const credentials: ApiAuthLoginRequest = { email, password };
     startLogin(credentials);
   };
 
@@ -61,7 +61,6 @@ export const LoginPage = () => {
           Recuperar contraseña
         </Link>
       </div>
-      <ToogleThemeButton fab={true} />
       <BubblesDark />
       <BubblesLight />
     </main>

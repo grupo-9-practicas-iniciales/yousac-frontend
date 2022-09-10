@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { AuthState, User } from './';
 
 interface ContextProps extends AuthState {
-    login: (user: User) => void;
+    login: (user: User, token: string) => void;
     logout: (errorMsg: string | null) => void;
     clearErrorMsg: () => void;
     checkingAuth: () => void;

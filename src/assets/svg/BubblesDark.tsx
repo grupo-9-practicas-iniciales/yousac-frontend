@@ -1,12 +1,12 @@
 import { SVGProps } from "react";
 
-interface Props extends SVGProps<SVGSVGElement> {}
+interface Props extends SVGProps<SVGSVGElement> { }
 
 const BubblesDark = (props: Props) => (
   <>
     {/* Tiny */}
     <svg
-      className="absolute hidden dark:block -top-10 md:top-24 right-10 md:right-16 w-[90px] md:w-[120px] rotate-[140deg]"
+      className="absolute  hidden dark:block -top-10 md:top-24 right-10 md:right-16 w-[90px] md:w-[120px] rotate-[140deg]"
       width={159}
       height={159}
       viewBox="0 0 360 360"

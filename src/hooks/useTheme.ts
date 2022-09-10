@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
 
 
-const initialValue = localStorage.getItem('darkmode') === 'true' ? true : false
+const initialValue = () => {
+    if (localStorage.getItem('darkmode') === 'true') {
+        return true
+    } else {
+        return false
+    }
+}
 
 export const useTheme = () => {
 
-    const [darkModeEnabled, setDarkModeEnabled] = useState<boolean>(initialValue)
+    const [darkModeEnabled, setDarkModeEnabled] = useState<boolean>(initialValue())
 
     useEffect(() => {
+
+        console.log(darkModeEnabled)
 
         darkModeEnabled
             ? document.documentElement.classList.add('dark')
@@ -18,6 +26,7 @@ export const useTheme = () => {
     }, [darkModeEnabled])
 
     const toogleDarkMode = () => {
+
         setDarkModeEnabled((prevState) => {
             return !prevState
         })
