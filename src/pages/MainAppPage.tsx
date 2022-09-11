@@ -2,7 +2,7 @@ import { useAuthStore } from "../hooks/useAuthStore";
 import { Navbar } from "../components/ui/navbar/Navbar";
 import { SearchSection, WavyFooter } from "../components";
 import { useContentStore } from "../hooks/useContentStore";
-import { useEffect } from "react";
+import { useEffect, useState } from 'react';
 import { useApi } from "../hooks/useApi";
 import { ApiSearchPostResponse } from "../api";
 import { GridCard } from "../components/ui/card/GridCard";
@@ -11,10 +11,11 @@ export const MainAppPage = () => {
   const { user } = useAuthStore();
   const { posts, users, selectedIdSection, setPosts } = useContentStore();
   const { perfomFetch, response } = useApi<ApiSearchPostResponse>();
-
   useEffect(() => {
     // * SEARCH POSTS
+
     if (selectedIdSection != "") {
+
       perfomFetch({
         url: `/search?param=post`,
         method: "post",
@@ -25,9 +26,10 @@ export const MainAppPage = () => {
     }
   }, [selectedIdSection]);
 
-  // * LATEST POSTS
+  // * FIRST LOAD (LATEST POSTS)
   useEffect(() => {
-    if (selectedIdSection == "") {
+    // * Dont fetch if there is a search or if is already loaded a post or user
+    if (selectedIdSection == '' && posts.length == 0 && users.length == 0) {
       perfomFetch({
         url: `/search`,
         method: "post",
@@ -36,10 +38,9 @@ export const MainAppPage = () => {
   }, []);
 
   useEffect(() => {
+    // * Loads the posts in the store
     if (response) {
       setPosts(response.posts);
-    } else {
-      setPosts([]);
     }
   }, [response]);
 

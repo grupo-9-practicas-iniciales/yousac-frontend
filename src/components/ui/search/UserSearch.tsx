@@ -17,7 +17,7 @@ type FormState = typeof formInitialState;
 export const UserSearch = () => {
 
     const { perfomFetch, response, isLoading } = useApi<ApiSearchUserResponse>();
-    const { setIsLoading, setUsers } = useContentStore();
+    const { setIsLoading, setUsers, setSelectIdSection } = useContentStore();
 
     const onSubmit = async ({
         idStudent
@@ -45,7 +45,7 @@ export const UserSearch = () => {
 
     useEffect(() => {
         if (response) {
-            console.log(response)
+            setSelectIdSection('');
             setUsers([response.user] || []);
         }
     }, [response])

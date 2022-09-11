@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Avatar } from "../../";
 import { PostInterface } from "../../../api";
 import { formatDateToWords } from "../../../utils";
+import { useContentStore } from '../../../hooks/useContentStore';
 
 type CardPostProps = {
   post: PostInterface;
@@ -10,6 +11,7 @@ type CardPostProps = {
 
 export const CardPost = ({ post, behavior }: CardPostProps) => {
   const postDate = formatDateToWords(Date.parse(post.createdAt));
+  const { setSelectedPost } = useContentStore();
 
   return (
     <>
@@ -29,11 +31,14 @@ export const CardPost = ({ post, behavior }: CardPostProps) => {
       <div className="flex flex-col text-xs md:text-sm space-y-2 dark:text-white">
         <p>
           {" "}
-          <strong>Código: </strong> {post.section.course?.code}
+          {
+            post.section.course && <> <strong>Curso: </strong> {`${post.section.course.code} : ${post.section.course.name || ''}`}</>
+          }
         </p>
         <p>
-          <strong>Catedrático: </strong>
-          {post.section.teacher?.names}
+          {
+            post.section.teacher && <> <strong>Catedrático: </strong>{post.section.teacher.name}</>
+          }
         </p>
         <div className="flex justify-between">
           <p>
@@ -41,7 +46,7 @@ export const CardPost = ({ post, behavior }: CardPostProps) => {
             {post.section.section}
           </p>
           {behavior === "link" && (
-            <Link to={`/post`} className="text-info-dark-3">
+            <Link to={`/post`} onClick={() => setSelectedPost(post)} className="text-info-dark-3">
               Ver publicación
             </Link>
           )}

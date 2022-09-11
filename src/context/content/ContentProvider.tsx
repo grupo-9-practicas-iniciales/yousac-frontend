@@ -38,6 +38,8 @@ export const ContentProvider: FC<ContentProviderProps> = ({ children }) => {
 
     const setSelectedUser = (user: UserInterface) => {
         dispatch({ type: 'CONTENT-SET-SELECTED-USER', payload: user })
+        dispatch({ type: 'CONTENT-SET-SELECTED-ID-SECTION', payload: '' })
+
     }
 
     const setSelectIdSection = (id: string) => {

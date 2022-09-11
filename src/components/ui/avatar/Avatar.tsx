@@ -8,6 +8,7 @@ import { AvatarProfileButton } from "./AvatarProfileButton";
 
 import { useAuthStore } from "../../../hooks/useAuthStore";
 import { UserInterface } from "../../../api/api.types";
+import { useContentStore } from "../../../hooks";
 
 type AvatarProps = {
   user: UserInterface;
@@ -22,6 +23,8 @@ export const Avatar = ({
 }: AvatarProps) => {
   const { user: loguedUser, startLogout } = useAuthStore();
   const displayUserName = user.names[0] + user.lastnames[0];
+  const { setSelectedUser } = useContentStore();
+
 
   return (
     <>
@@ -71,7 +74,7 @@ export const Avatar = ({
           )}
         </Popover>
       ) : (
-        <Link to={"/profile/user"}>
+        <Link to={"/profile/user"} onClick={() => setSelectedUser(user)}>
           <AvatarProfileButton displayUserName={displayUserName} />
         </Link>
       )}

@@ -52,7 +52,7 @@ export interface PostInterface {
     section: string;
     teacher: {
       idTeacher: number;
-      names: string;
+      name: string;
     } | null;
     course: {
       idCourse: number;

@@ -6,6 +6,7 @@ import { SecondFilter } from './SecondFilter';
 const secondFilterOptions: SelectOptionsInterface[] = [
     { displayName: 'Curso', id: '1' },
     { displayName: 'Catedrático', id: '2' },
+    { displayName: 'Ultimos', id: '3' },
 ]
 
 export const PostSearch = () => {

@@ -1,12 +1,17 @@
 import { UserInterface } from "../../../api";
 import { Avatar } from "../../";
 import { Link } from "react-router-dom";
+import { useContentStore } from "../../../hooks";
 
 type CardUserProps = {
   user: UserInterface;
 };
 
 export const CardUser = ({ user }: CardUserProps) => {
+
+  const { setSelectedUser } = useContentStore();
+
+
   return (
     <>
       <div className="flex space-x-3 md:space-x-4 lg:space-x-5">
@@ -20,7 +25,7 @@ export const CardUser = ({ user }: CardUserProps) => {
               <strong>Registro académico: </strong>
               {user.idStudent}
             </p>
-            <Link to={`/post`} className="text-info-dark-1">
+            <Link onClick={() => setSelectedUser(user)} to={`/profile/user`} className="text-info-dark-1">
               Ver perfil
             </Link>
           </div>
