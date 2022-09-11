@@ -123,3 +123,29 @@ export interface ApiSearchPostResponse {
     errors: ApiListError[];
     posts: PostInterface[];
 }
+
+export interface ApiSearchTeacherRequest {
+    name: string;
+}
+
+export interface ApiSearchTeacherResponse {
+    ok: boolean;
+    msg: string;
+    errors: ApiListError[];
+    teachers: SearchTeacherInterface[];
+
+}
+
+export interface SearchTeacherInterface {
+    idTeacher: number;
+    name: string;
+    sections: {
+        idSection: number;
+        section: string;
+        course: {
+            idCourse: number;
+            name: string;
+            code: string;
+        } | null;
+    }[]
+}

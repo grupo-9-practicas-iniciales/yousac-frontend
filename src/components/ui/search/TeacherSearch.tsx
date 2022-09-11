@@ -3,42 +3,142 @@ import { SearchIcon } from "../../../assets"
 import { TextField } from "../textField/TextField"
 import { Button } from '../button/Button';
 import { SelectOptionsInterface } from "../select/Select.types";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Select } from "../select/Select";
+import { useApi } from '../../../hooks/useApi';
+import { useContentStore } from '../../../hooks/useContentStore';
+import { ApiSearchTeacherResponse, ApiSearchPostResponse, SearchTeacherInterface } from '../../../api/api.types';
 
-const teachersFound: SelectOptionsInterface[] = [
-    { displayName: 'catedratico1', id: '1' },
-    { displayName: 'catedratico2', id: '2' },
-]
+const formInitialState = {
+    name: ''
+}
+
+type FormState = typeof formInitialState;
 
 export const TeacherSearch = () => {
 
-    const [selectedTeacherFound, setSelectedTeacherFound] = useState(teachersFound[0]);
+    const { setIsLoading } = useContentStore();
+    const { isLoading, response, perfomFetch } = useApi<ApiSearchTeacherResponse>()
+
+    const [teachersFound, setTeachersFound] = useState<SearchTeacherInterface[] | null>(null);
+
+    useEffect(() => {
+
+        if (isLoading) {
+            setIsLoading(true);
+        } else {
+            setIsLoading(false);
+        }
+
+    }, [isLoading])
 
 
-    const handleSubmit = () => {
+    useEffect(() => {
 
+        if (response) {
+            setTeachersFound(response.teachers);
+        }
+
+    }, [response])
+
+    const onSubmit = ({ name }: FormState) => {
+
+
+        perfomFetch({
+            url: `/search?param=teacher`,
+            method: 'post',
+            body: {
+                name
+            }
+        })
     }
+
 
     return (
         <>
-            <Formik initialValues={{
-                idStudent: ''
-            }} onSubmit={() => handleSubmit()}>
+            <Formik initialValues={formInitialState} onSubmit={onSubmit}>
                 <Form className='flex w-full'>
                     <div className='flex my-3 gap-x-2  w-full'>
-                        <TextField placeholder='Nombre del catedrático' type='search' name='idStudent' />
+                        <TextField placeholder='Nombre catedratico' type='search' name='name' />
                         <Button type='submit' className='w-1/6 flex justify-center items-center' >
                             <SearchIcon />
                         </Button>
                     </div>
                 </Form>
             </Formik>
-            {/* evalute options1[] lenght */}
-            <div className="grid grid-cols-2 w-full gap-x-2">
-                <Select selected={selectedTeacherFound} setSelected={setSelectedTeacherFound} options={teachersFound} />
-                <Select selected={selectedTeacherFound} setSelected={setSelectedTeacherFound} options={teachersFound} />
-            </div>
+            {
+                teachersFound && teachersFound.length > 0 && <TeacherSelects foundedTeachers={teachersFound} />
+            }
         </>
+    )
+}
+
+
+interface TeacherSelectsProps {
+    foundedTeachers: SearchTeacherInterface[] | null
+}
+
+const TeacherSelects = ({ foundedTeachers }: TeacherSelectsProps) => {
+
+    const { setSelectIdSection } = useContentStore();
+
+
+    const teacherOptions: SelectOptionsInterface[] = foundedTeachers!.map((teacher) => {
+        return {
+            displayName: teacher.name,
+            id: teacher.idTeacher + ""
+        }
+    })
+    const [selectedTeacher, setSelectedTeacher] = useState<SelectOptionsInterface>(teacherOptions[0]);
+
+    const selectedTeacherObject = foundedTeachers!.filter((teacher) => teacher.idTeacher + "" === selectedTeacher.id)[0];
+
+    const selectOptions: SelectOptionsInterface[] = selectedTeacherObject.sections.map((section) => {
+
+        let courseName = ""
+
+        if (section.course) {
+            courseName = section.course.name + ": "
+        }
+
+        return {
+            displayName: courseName + section.section,
+            id: section.idSection + ""
+        }
+    })
+
+
+
+    const [selectedSection, setSelectedSection] = useState<SelectOptionsInterface>(selectOptions[0]);
+
+    useEffect(() => {
+        setSelectIdSection(selectedSection.id);
+    }, [selectedSection])
+
+    useEffect(() => {
+        const selectedTeacherObject = foundedTeachers!.filter((teacher) => teacher.idTeacher + "" === selectedTeacher.id)[0];
+
+        const selectOptions: SelectOptionsInterface[] = selectedTeacherObject.sections.map((section) => {
+            let courseName = ""
+
+            if (section.course) {
+                courseName = section.course.name + " "
+            }
+
+            return {
+                displayName: courseName + section.section,
+                id: section.idSection + ""
+            }
+        })
+
+        setSelectedSection(selectOptions[0])
+    }, [selectedTeacher])
+
+
+    return (
+        <div className="grid grid-cols-2 w-full gap-x-2">
+            <Select selected={selectedTeacher} setSelected={setSelectedTeacher} options={teacherOptions} />
+            <Select selected={selectedSection} setSelected={setSelectedSection} options={selectOptions} />
+        </div>
     )
 }
