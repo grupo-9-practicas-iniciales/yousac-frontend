@@ -8,7 +8,7 @@ type CardUserProps = {
 
 export const CardUser = ({ user }: CardUserProps) => {
   return (
-    <Link to={"/user"}>
+    <Link to={"/profile/user"}>
       <div className="flex space-x-3 md:space-x-4 lg:space-x-5">
         <Avatar user={user} />
         <div className="flex flex-col text-sm md:text-base text-left w-full">

@@ -26,9 +26,10 @@ export const Select = ({ selected, setSelected, options }: SelectProps) => {
   return (
     <Listbox value={selected} onChange={setSelected}>
       <div className="relative mt-1 text-white w-full">
-        <Listbox.Button className="z-10 relative w-full cursor-pointer rounded-lg bg-primary-light-1 dark:bg-[#05131E] py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm
-        text-white ">
-        
+        <Listbox.Button
+          className="z-10 relative w-full cursor-pointer rounded-lg bg-primary-light-1 dark:bg-[#05131E] py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm
+        text-white "
+        >
           <span className="block truncate">{selected.displayName}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <DownArrowIcon2
@@ -51,10 +52,10 @@ export const Select = ({ selected, setSelected, options }: SelectProps) => {
               <Listbox.Option
                 key={optionIdx}
                 className={({ active }) =>
-                  `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                  `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                     active
                       ? "font-black text-info-dark-1  dark:text-primary-dark-1 "
-                      : "text-gray-400 font-normal"
+                      : "text-white font-normal transition-all duration-300"
                   }`
                 }
                 value={option}

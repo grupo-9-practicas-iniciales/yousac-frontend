@@ -15,7 +15,7 @@ export const GridCard = ({ users, posts }: GridCardProps) => {
     );
   } else if (users.length === 0 && posts.length > 0) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 w-5/6">
         {posts.map((post) => (
           <Card key={post.idPost}>
             <CardPost post={post} />

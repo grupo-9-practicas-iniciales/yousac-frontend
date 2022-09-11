@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "../../";
-import { PostInterface, UserInterface } from "../../../api";
+import { PostInterface } from "../../../api";
+import { formatDateToWords } from "../../../utils";
 
 type CardPostProps = {
   post: PostInterface;
 };
 
 export const CardPost = ({ post }: CardPostProps) => {
+  const postDate = formatDateToWords(Date.parse(post.createdAt));
+
   return (
     <Link className="cursor-pointer" to={`/post`}>
       <div className="flex space-x-3 md:space-x-4 lg:space-x-5 coursor">
@@ -16,9 +19,7 @@ export const CardPost = ({ post }: CardPostProps) => {
           <p className="text-gray-100">
             {`${post.user.names} ${post.user.lastnames}`}
           </p>
-          <p>
-            {``}
-          </p>
+          <p>{`${postDate}`}</p>
         </div>
       </div>
       <h4 className="text-center text-base lg:text-lg font-semibold">

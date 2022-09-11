@@ -5,6 +5,7 @@ import {
   LandingPage,
   LoginPage,
   MainAppPage,
+  PostPage,
   ProfilePage,
   RegisterPage,
 } from "../pages";
@@ -49,10 +50,19 @@ export const AppRouter = () => {
         />
 
         <Route
-          path="/profile/user/:idStudent"
+          path="/profile/user"
           element={
             <PrivateRoute>
               <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/post"
+          element={
+            <PrivateRoute>
+              <PostPage />
             </PrivateRoute>
           }
         />
@@ -75,7 +85,6 @@ export const AppRouter = () => {
           }
         />
       </Routes>
-
     </>
   );
 };
