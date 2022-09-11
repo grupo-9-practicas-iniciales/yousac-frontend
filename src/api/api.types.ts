@@ -20,12 +20,48 @@ export interface ApiAuthLoginResponse {
 
 export interface ApiAuthRevalidateResponse extends ApiAuthLoginResponse { }
 
+export interface ApiSearchUserRequest {
+    idStudent: string;
+}
+
+export interface ApiSearchUserResponse {
+    ok: boolean;
+    msg: string;
+    errors: ApiListError[];
+    user: UserInterface;
+}
+
+
 export interface UserInterface {
     idUser: number;
     idStudent: string;
     names: string;
     lastnames: string;
     email: string;
+}
+
+export interface PostInterface {
+    idPost: number;
+    title: string;
+    description: string;
+    user: {
+        idUser: number;
+        names: string;
+        lastnames: string;
+    },
+    section: {
+        idSection: number;
+        section: string;
+        teacher: {
+            idTeacher: number;
+            names: string;
+        } | null;
+        course: {
+            idCourse: number;
+            name: string;
+            code: string;
+        } | null;
+    }
 }
 
 export interface ApiUserCreateRequest {
@@ -51,4 +87,39 @@ export interface ApiErrorInterface {
     ok: boolean;
     msg: string;
     errors: ApiListError[];
+}
+
+
+export interface ApiSearchCourseRequest {
+    name: string;
+}
+
+export interface ApiSearchCourseResponse {
+    ok: boolean;
+    msg: string;
+    errors: ApiListError[];
+    courses: SearchCourseInterface[];
+
+}
+
+export interface SearchCourseInterface {
+    idCourse: number;
+    name: string;
+    code: string;
+    sections: {
+        idSection: number;
+        section: string;
+        teacher: {
+            idTeacher: number;
+            name: string;
+        } | null;
+    }[]
+}
+
+
+export interface ApiSearchPostResponse {
+    ok: boolean;
+    msg: string;
+    errors: ApiListError[];
+    posts: PostInterface[];
 }

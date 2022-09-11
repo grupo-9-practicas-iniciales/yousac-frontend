@@ -25,6 +25,10 @@ export const Select = ({
     options,
 }: SelectProps) => {
 
+    if (!selected) {
+        return <></>
+    }
+
     return (
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative mt-1 text-white w-full">

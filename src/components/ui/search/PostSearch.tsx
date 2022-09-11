@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Select } from '../select/Select';
 import { SelectOptionsInterface } from '../select/Select.types';
+import { SecondFilter } from './SecondFilter';
 
 const secondFilterOptions: SelectOptionsInterface[] = [
     { displayName: 'Curso', id: '1' },
@@ -15,7 +16,7 @@ export const PostSearch = () => {
     return (
         <>
             <Select selected={selectedFirstFilter} setSelected={setSelectedFirstFilter} options={secondFilterOptions} />
-            {/* <FirstFilter id={selectedFirstFilter.id} /> */}
+            <SecondFilter id={selectedFirstFilter.id} />
         </>
     )
 }
