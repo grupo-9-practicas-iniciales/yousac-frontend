@@ -54,7 +54,7 @@ export const Select = ({ selected, setSelected, options }: SelectProps) => {
                 className={({ active }) =>
                   `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                     active
-                      ? "font-black text-info-dark-1  dark:text-primary-dark-1 "
+                      ? "font-black text-info-light-3 dark:text-primary-dark-1 "
                       : "text-white font-normal transition-all duration-300"
                   }`
                 }

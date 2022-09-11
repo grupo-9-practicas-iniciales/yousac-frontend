@@ -25,12 +25,15 @@ export const Avatar = ({
 
   return (
     <>
-      {user.idStudent === loguedUser.idStudent ? (
+      {displayMenu ? (
         <Popover as="div" className="relative inline-block text-left">
           {({ open }) => (
             <>
               <Popover.Button>
-                <AvatarProfileButton displayUserName={displayUserName} />
+                <AvatarProfileButton
+                  isUserOnline={isUserOnline}
+                  displayUserName={displayUserName}
+                />
               </Popover.Button>
 
               <Transition
@@ -44,10 +47,7 @@ export const Avatar = ({
               >
                 <Popover.Panel className="absolute right-0 mt-2 w-32 md:w-40 origin-top-right divide-y rounded-sm divide-gray-400 dark:divide-primary-dark-3/[0.1]  bg-white dark:bg-darkContrast shadow-lg dark:shadow-none ring-1 ring-black dark:ring-primary-dark-3/[0.1] ring-opacity-5  focus:outline-none">
                   <div className="py-1">
-                    <Link
-                      to={`/profile/user/${user.idStudent}`}
-                      className="avatar-option-menu"
-                    >
+                    <Link to={`/profile/user`} className="avatar-option-menu">
                       <CgProfile className="mr-2" />
                       Perfil
                     </Link>

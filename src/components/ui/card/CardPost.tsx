@@ -11,7 +11,7 @@ export const CardPost = ({ post }: CardPostProps) => {
   const postDate = formatDateToWords(Date.parse(post.createdAt));
 
   return (
-    <Link className="cursor-pointer" to={`/post`}>
+    <>
       <div className="flex space-x-3 md:space-x-4 lg:space-x-5 coursor">
         <Avatar user={post.user} />
         <div className="flex flex-col text-sm lg:text-base text-left w-full font-medium">
@@ -39,8 +39,14 @@ export const CardPost = ({ post }: CardPostProps) => {
             <strong>Sección: </strong>
             {post.section.section}
           </p>
+          <Link
+            to={`/post`}
+            className = "text-info-dark-3"
+          >
+            Ver publicación
+          </Link>
         </div>
       </div>
-    </Link>
+    </>
   );
 };
