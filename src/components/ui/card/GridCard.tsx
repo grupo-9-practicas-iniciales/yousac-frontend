@@ -18,7 +18,7 @@ export const GridCard = ({ users, posts }: GridCardProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 w-5/6">
         {posts.map((post) => (
           <Card key={post.idPost}>
-            <CardPost post={post} />
+            <CardPost behavior="link" post={post} />
           </Card>
         ))}
       </div>

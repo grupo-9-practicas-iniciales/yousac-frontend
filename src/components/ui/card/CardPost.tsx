@@ -5,9 +5,10 @@ import { formatDateToWords } from "../../../utils";
 
 type CardPostProps = {
   post: PostInterface;
+  behavior: "default" | "link";
 };
 
-export const CardPost = ({ post }: CardPostProps) => {
+export const CardPost = ({ post, behavior }: CardPostProps) => {
   const postDate = formatDateToWords(Date.parse(post.createdAt));
 
   return (
@@ -39,13 +40,14 @@ export const CardPost = ({ post }: CardPostProps) => {
             <strong>Sección: </strong>
             {post.section.section}
           </p>
-          <Link
-            to={`/post`}
-            className = "text-info-dark-3"
-          >
-            Ver publicación
-          </Link>
+          {behavior === "link" && (
+            <Link to={`/post`} className="text-info-dark-3">
+              Ver publicación
+            </Link>
+          )}
         </div>
+
+        {behavior === "default" && <div>{post.description}</div>}
       </div>
     </>
   );
