@@ -6,3 +6,4 @@ export * from "./useRegister";
 export * from './useApi'
 export * from './useMediaQuery'
 export * from './useContentStore'
+export * from './useChangePassword'

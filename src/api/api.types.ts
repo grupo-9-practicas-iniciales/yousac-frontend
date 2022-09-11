@@ -142,3 +142,20 @@ export interface SearchTeacherInterface {
     } | null;
   }[]
 }
+
+export interface ApiRecoveryTokenRquest {
+  token: string;
+}
+
+export interface ApiRecoveryTokenResponse {
+  ok: boolean,
+  msg: string,
+  token: string,
+  errors: ApiListError[]
+}
+
+export interface ApiChangePasswordResponse {
+  ok: boolean,
+  msg: string,
+  errors: ApiListError[]
+}
