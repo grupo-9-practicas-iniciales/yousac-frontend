@@ -37,8 +37,6 @@ font-style: normal; */
   h4,
   h5,
   h6,
-  p,
-  a,
   li,
   input,
   textarea,
@@ -85,5 +83,9 @@ font-style: normal; */
   .text-logo {
     @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC] bg-clip-text;
     color: transparent;
+  }
+
+  .bg-wavy-footer {
+    @apply bg-light dark:bg-dark;
   }
 }

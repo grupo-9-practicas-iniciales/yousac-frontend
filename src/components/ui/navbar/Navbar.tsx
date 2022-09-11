@@ -1,18 +1,16 @@
-import { Avatar, AppLogo } from "../../"
-import { UserInterface } from "../../../api"
-
+import { Avatar, AppLogo } from "../../";
+import { UserInterface } from "../../../api";
 
 interface NavbarProps {
-    user: UserInterface
+  user: UserInterface;
 }
 
 export const Navbar = ({ user }: NavbarProps) => {
+  return (
+    <nav className="h-[10vh] flex items-center justify-around">
+      <AppLogo />
 
-    return (
-        <nav className="h-[10vh] flex items-center justify-around">
-            <AppLogo />
-
-            <Avatar user={user} />
-        </nav>
-    )
-}
+      <Avatar isUserOnline={true} displayMenu={true} user={user} />
+    </nav>
+  );
+};

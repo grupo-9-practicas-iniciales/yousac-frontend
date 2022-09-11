@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { RocketSVG } from "../assets";
-import { DownArrowIcon } from "../assets/icons/DownArrowIcon";
 import { AppLogo, WavyFooter } from "../components";
 
 export const LandingPage = () => {
@@ -24,6 +23,12 @@ export const LandingPage = () => {
           <div className="flex justify-center items-center">
             {/* <DownArrowIcon className="text-primary-light-1 dark:text-primary-dark-1 text-2xl lg:text-3xl" /> */}
           </div>
+          {/* <Card>
+            <CardPost user={testInitialUser2} />
+          </Card>
+          <Card>
+            <CardUser user={testInitialUser2} />
+          </Card> */}
         </section>
       </main>
       <WavyFooter />

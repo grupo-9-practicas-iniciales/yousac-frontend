@@ -2,12 +2,14 @@
 export * from "./ui/avatar/Avatar";
 export * from "./ui/button/Button";
 export * from "./ui/textField/TextField";
-export * from './ui/footer/WavyFooter'
-export * from './ui/textComponent/AppLogo'
-export * from "./ui/button/Button";
-export * from "./ui/avatar/Avatar";
-export * from './ui/search/SearchSection'
-export * from './ui/select/Select'
+export * from "./ui/textField/ErrorMessageField";
+export * from "./ui/footer/WavyFooter";
+export * from "./ui/textComponent/AppLogo";
+export * from "./ui/search/SearchSection";
+export * from "./ui/select/Select";
+export * from "./ui/card/Card";
+export * from "./ui/card/CardUser";
+export * from "./ui/card/CardPost";
 
 // Extra
 export * from "./theme/ToogleThemeButton";
