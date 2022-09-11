@@ -1,5 +1,3 @@
-import { UserInterface } from "../../../api/api.types";
-
 type CardProps = {
   children: React.ReactNode;
   className?: string;

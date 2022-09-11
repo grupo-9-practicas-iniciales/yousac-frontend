@@ -1,26 +1,13 @@
 import { Link } from "react-router-dom";
 import { RocketSVG } from "../assets";
-import { DownArrowIcon } from "../assets/icons/DownArrowIcon";
-import { WavyFooter, Avatar, Card, CardPost } from "../components";
-import { User } from "../context/auth";
-import { CardUser } from "../components/ui/card/CardUser";
-
-const testInitialUser2: User = {
-  names: "Jorge",
-  lastnames: "Garcia",
-  email: "a",
-  idStudent: "123",
-  idUser: 1,
-};
+import { AppLogo, WavyFooter } from "../components";
 
 export const LandingPage = () => {
   return (
     <>
       <main className="min-h-screen bg-light dark:bg-dark overflow-x-hidden transition-colors">
         <nav className="h-[10vh] flex items-center justify-around">
-          <h1 className="text-logo font-bold text-[28px] lg:text-[36px]">
-            YOUSAC
-          </h1>
+          <AppLogo />
           <Link
             className="text-black font-bold text-[12px] lg:text-[16px] hover:text-gray-100"
             to="/login"
@@ -34,7 +21,7 @@ export const LandingPage = () => {
             Las mejores Recomendaciones
           </h2>
           <div className="flex justify-center items-center">
-            <DownArrowIcon className="text-primary-light-1 dark:text-primary-dark-1 text-2xl lg:text-3xl" />
+            {/* <DownArrowIcon className="text-primary-light-1 dark:text-primary-dark-1 text-2xl lg:text-3xl" /> */}
           </div>
           {/* <Card>
             <CardPost user={testInitialUser2} />

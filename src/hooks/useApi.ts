@@ -1,6 +1,6 @@
 import { AxiosError } from "axios"
-import { useState, useEffect, useRef } from 'react';
-import { ApiErrorInterface, ApiListError, ApiUserCreateRequest, APIUserCreateResponse, yousacApi } from "../api"
+import { useState } from 'react';
+import { ApiErrorInterface, ApiListError, yousacApi } from "../api"
 
 import toast from 'react-hot-toast';
 
@@ -46,7 +46,9 @@ export const useApi = <T>() => {
                     break;
 
                 case "get":
-                    request = await yousacApi.get<T>(url)
+                    request = await yousacApi.get<T>(url, {
+                        params: body
+                    })
                     break;
 
                 case "put":
@@ -81,7 +83,7 @@ export const useApi = <T>() => {
             }
 
             setMsg(data.msg)
-            setResponse(data.data)
+            setResponse(data)
 
         } catch (e) {
 
@@ -103,6 +105,7 @@ export const useApi = <T>() => {
             // * Toast for general error
             toast.error(msg)
 
+            setResponse(null)
             setIsLoading(false)
             setisError(true)
             setErrors(errors);

@@ -15,8 +15,6 @@ export const useTheme = () => {
 
     useEffect(() => {
 
-        console.log(darkModeEnabled)
-
         darkModeEnabled
             ? document.documentElement.classList.add('dark')
             : document.documentElement.classList.remove('dark')

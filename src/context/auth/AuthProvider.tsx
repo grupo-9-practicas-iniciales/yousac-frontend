@@ -36,6 +36,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       type: "AUTH-logout",
       payload: errorMsg,
     });
+
+    localStorage.removeItem("auth-token");
+
   };
 
   const clearErrorMsg = () => {
