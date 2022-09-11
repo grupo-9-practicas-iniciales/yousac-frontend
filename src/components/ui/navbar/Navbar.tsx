@@ -1,13 +1,10 @@
 import { Avatar, AppLogo } from "../../";
-import { UserInterface } from "../../../api";
+import { useAuthStore } from "../../../hooks";
 
-interface NavbarProps {
-  user: UserInterface;
-}
-
-export const Navbar = ({ user }: NavbarProps) => {
+export const Navbar = () => {
+  const { user } = useAuthStore();
   return (
-    <nav className="h-[10vh] flex items-center justify-around">
+    <nav className="h-[10vh] flex items-center justify-around shadow-md dark:shadow-none dark:bg-darkContrast">
       <AppLogo />
 
       <Avatar isUserOnline={true} displayMenu={true} user={user} />

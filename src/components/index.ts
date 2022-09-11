@@ -1,4 +1,5 @@
 // Base components
+export * from "./ui/navbar/Navbar";
 export * from "./ui/avatar/Avatar";
 export * from "./ui/button/Button";
 export * from "./ui/textField/TextField";

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { CardPost } from "../components";
+import { CardPost, Navbar } from "../components";
 import { useContentStore } from "../hooks";
 
 import "animate.css";
@@ -12,13 +12,16 @@ export const PostPage = () => {
   }
 
   return (
-    <>
+    <div className="bg-white dark:bg-dark">
+      <Navbar />
       <div
-        className="bg-white dark:bg-dark min-h-screen w-full p-5 transition-all
-      animate__animated animate__fadeIn"
+        className="flex mt-5 md:mt-7 p-10 md:p-16 lg:p-0 justify-center mx-auto min-h-screen w-full
+        animate__animated animate__fadeIn"
       >
-        <CardPost post={selectedPost} behavior="default" />
+        <div className="max-w-2xl">
+          <CardPost post={selectedPost} behavior="default" />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
