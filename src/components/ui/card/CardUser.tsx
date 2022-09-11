@@ -20,7 +20,7 @@ export const CardUser = ({ user }: CardUserProps) => {
           <h3 className="font-semibold">
             {user.names} {user.lastnames}
           </h3>
-          <div className="flex justify-between space-y-2 dark:text-white">
+          <div className="flex justify-between space-x-5 dark:text-white">
             <p>
               <strong>Registro académico: </strong>
               {user.idStudent}

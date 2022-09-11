@@ -91,40 +91,6 @@ export const CardPost = ({ post, behavior }: CardPostProps) => {
       {behavior === "default" && (
         <div className="w-full text-justify my-10 text-sm md:text-base lg:text-xl">
           {post.description}
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio,
-          debitis maiores, sed sapiente et magnam, nemo dicta a quae eveniet
-          pariatur numquam dolore reiciendis accusamus repudiandae minus natus
-          recusandae porro? Aperiam nam voluptate, quam quae facere eos qui
-          nesciunt alias, nobis explicabo molestiae delectus quia? Sunt at
-          similique inventore, dignissimos, magnam rerum sint corporis harum
-          natus tempore sapiente fugit reprehenderit. Id laboriosam nisi, unde
-          obcaecati ipsam possimus eum praesentium iste facere debitis
-          repellendus totam repellat fugit rem placeat! Ab adipisci ea officia
-          ipsum voluptatum quos! Dolore quos adipisci dolorum nihil. Quo
-          adipisci sed voluptatem accusantium sapiente, iure numquam obcaecati
-          iusto voluptatum in libero nesciunt ad cumque odio quam earum! Beatae
-          dolor praesentium esse quibusdam dolores harum tenetur cumque nobis
-          repellat? Eius, a expedita quae sequi nihil, laborum voluptatum culpa
-          similique obcaecati consectetur corporis sapiente dolor explicabo
-          neque cum ad odit ut fuga hic saepe cumque minus porro. Nam, nisi
-          optio. Voluptatum, architecto? Temporibus cum exercitationem a
-          recusandae dolorum fugiat vel possimus, architecto, veritatis harum
-          provident? Ex labore dolores ratione in accusantium et, reprehenderit
-          modi ab voluptatibus non voluptates. Id, quod. Totam facilis quo
-          recusandae saepe nisi, voluptate nobis assumenda reprehenderit,
-          consectetur provident vero, eum suscipit tempore maxime molestiae
-          magnam est. Ut sequi itaque iusto veniam voluptate. Dicta doloribus
-          unde quia. Animi dolorem quaerat exercitationem molestiae, temporibus
-          quia voluptate consectetur ex nam nemo magnam esse cupiditate sint
-          repellat reprehenderit inventore, aliquam amet, officia ullam porro?
-          Quasi laboriosam commodi soluta tenetur nisi? Aut vero sint delectus
-          optio ex aperiam adipisci ducimus esse illo suscipit eius voluptas
-          fugiat voluptatum unde, consequatur explicabo dolor consequuntur
-          deserunt. Eos vitae numquam aliquam nulla incidunt magnam error!
-          Facilis blanditiis praesentium aperiam laboriosam sapiente enim,
-          excepturi nisi quasi nemo quisquam quae aliquam, iusto voluptas
-          consequatur? Laborum tempora impedit nesciunt, magnam dolorum maxime,
-          modi enim reprehenderit alias ea nobis.
         </div>
       )}
     </>

@@ -47,8 +47,8 @@ export const MainAppPage = () => {
   return (
     <>
       <main className="min-h-screen bg-light dark:bg-dark overflow-x-hidden transition-colors">
-        <Navbar user={user} />
-        <div className="flex flex-col justify-center items-center">
+        <Navbar />
+        <div className="flex flex-col justify-center items-center mb-10">
           <SearchSection />
           <GridCard posts={posts} users={users} />
         </div>
