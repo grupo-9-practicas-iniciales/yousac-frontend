@@ -27,7 +27,7 @@ export const Button = ({
         className +
         " " +
         (variant === "primary" ? primaryStyles : secondaryStyles) +
-        " w-full rounded-sm text-white py-2 px-4 bg-primary-light-1 hover:bg-primary-light-2 transition-all duration-200 text-xs md:text-sm"
+        " w-full rounded-md text-white py-2 px-4 bg-primary-light-1 hover:bg-primary-light-2 transition-all duration-200 text-xs md:text-sm"
       }
       onClick={onClick}
       type={type}
