@@ -6,9 +6,8 @@ import { CgProfile, CgLogOff } from "react-icons/cg";
 
 import { AvatarProfileButton } from "./AvatarProfileButton";
 
-import { useAuthStore } from "../../../hooks/useAuthStore";
 import { UserInterface } from "../../../api/api.types";
-import { useContentStore } from "../../../hooks";
+import { useContentStore, useAuthStore } from "../../../hooks";
 
 type AvatarProps = {
   user: UserInterface;
@@ -25,7 +24,6 @@ export const Avatar = ({
   const displayUserName = user.names[0] + user.lastnames[0];
   const { setSelectedUser } = useContentStore();
 
-
   return (
     <>
       {displayMenu ? (
@@ -34,6 +32,7 @@ export const Avatar = ({
             <>
               <Popover.Button>
                 <AvatarProfileButton
+                  onClick={() => setSelectedUser(user)}
                   isUserOnline={isUserOnline}
                   displayUserName={displayUserName}
                 />
@@ -74,8 +73,11 @@ export const Avatar = ({
           )}
         </Popover>
       ) : (
-        <Link to={"/profile/user"} onClick={() => setSelectedUser(user)}>
-          <AvatarProfileButton displayUserName={displayUserName} />
+        <Link to={"/profile/user"}>
+          <AvatarProfileButton
+            onClick={() => setSelectedUser(user)}
+            displayUserName={displayUserName}
+          />
         </Link>
       )}
     </>
