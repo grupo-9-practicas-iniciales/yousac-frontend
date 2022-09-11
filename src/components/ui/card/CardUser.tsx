@@ -8,7 +8,7 @@ type CardUserProps = {
 
 export const CardUser = ({ user }: CardUserProps) => {
   return (
-    <>
+    <Link to={"/user"}>
       <div className="flex space-x-3 md:space-x-4 lg:space-x-5">
         <Avatar user={user} />
         <div className="flex flex-col text-sm md:text-base text-left w-full">
@@ -20,15 +20,9 @@ export const CardUser = ({ user }: CardUserProps) => {
               <strong>Registro académico: </strong>
               {user.idStudent}
             </p>
-            <Link
-              to={`/user/${user.idStudent}`}
-              className="text-info-dark-3 text-sm"
-            >
-              Ver más
-            </Link>
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 };

@@ -1,45 +1,45 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "../../";
-import { UserInterface } from "../../../api";
+import { PostInterface, UserInterface } from "../../../api";
 
 type CardPostProps = {
-  user: UserInterface;
-  idPost?: number;
+  post: PostInterface;
 };
 
-export const CardPost = ({ idPost = 12, user }: CardPostProps) => {
+export const CardPost = ({ post }: CardPostProps) => {
   return (
-    <>
-      <div className="flex space-x-3 md:space-x-4 lg:space-x-5">
-        <Avatar user={user} />
+    <Link className="cursor-pointer" to={`/post`}>
+      <div className="flex space-x-3 md:space-x-4 lg:space-x-5 coursor">
+        <Avatar user={post.user} />
         <div className="flex flex-col text-sm lg:text-base text-left w-full font-medium">
-          <h3>Lenguajes formales y de progrmación</h3>
+          <h3>{post.section.course?.name}</h3>
           <p className="text-gray-100">
-            {`${user.names} ${user.lastnames} - 20 de septiembre de 2021`}
+            {`${post.user.names} ${post.user.lastnames}`}
+          </p>
+          <p>
+            {``}
           </p>
         </div>
       </div>
       <h4 className="text-center text-base lg:text-lg font-semibold">
-        ¿Recomendaciones para LFP?
+        {post.title}
       </h4>
       <div className="flex flex-col text-xs md:text-sm space-y-2 dark:text-white">
         <p>
           {" "}
-          <strong>Código: </strong> 0110
+          <strong>Código: </strong> {post.section.course?.code}
         </p>
         <p>
           <strong>Catedrático: </strong>
-          Ing. José Luis
+          {post.section.teacher?.names}
         </p>
         <div className="flex justify-between">
           <p>
-            <strong>Sección: </strong>N
+            <strong>Sección: </strong>
+            {post.section.section}
           </p>
-          <Link to={`/post/${idPost}`} className="text-info-dark-3">
-            Ver más
-          </Link>
         </div>
       </div>
-    </>
+    </Link>
   );
 };

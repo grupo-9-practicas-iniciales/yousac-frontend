@@ -84,4 +84,8 @@ font-style: normal; */
     @apply bg-gradient-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC] bg-clip-text;
     color: transparent;
   }
+
+  .bg-wavy-footer {
+    @apply bg-light dark:bg-dark;
+  }
 }
