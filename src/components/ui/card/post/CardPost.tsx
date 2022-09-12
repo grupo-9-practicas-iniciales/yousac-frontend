@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Avatar } from "../../";
-import { PostInterface } from "../../../api";
-import { formatDateToWords } from "../../../utils";
-import { useContentStore } from "../../../hooks/useContentStore";
+import { Avatar } from "../../..";
+import { PostInterface } from "../../../../api";
+import { formatDateToWords } from "../../../../utils";
+import { useContentStore } from "../../../../hooks/useContentStore";
 
 type CardPostProps = {
   post: PostInterface;

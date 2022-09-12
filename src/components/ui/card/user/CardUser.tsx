@@ -1,7 +1,7 @@
-import { UserInterface } from "../../../api";
-import { Avatar } from "../../";
+import { UserInterface } from "../../../../api";
+import { Avatar } from "../../..";
 import { Link } from "react-router-dom";
-import { useContentStore } from "../../../hooks";
+import { useContentStore } from "../../../../hooks";
 
 type CardUserProps = {
   user: UserInterface;

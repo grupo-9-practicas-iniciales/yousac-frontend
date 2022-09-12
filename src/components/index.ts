@@ -8,9 +8,15 @@ export * from "./ui/footer/WavyFooter";
 export * from "./ui/textComponent/AppLogo";
 export * from "./ui/search/SearchSection";
 export * from "./ui/select/Select";
-export * from "./ui/card/Card";
-export * from "./ui/card/CardUser";
-export * from "./ui/card/CardPost";
+
+// Cards
+export * from "./ui/card/base/Card";
+export * from "./ui/card/user/CardUser";
+export * from "./ui/card/post/CardPost";
+export * from "./ui/card/course/CardCourse";
+
+export * from "./ui/card/grid/GridCardMain";
+export * from "./ui/card/grid/GridCardContainer";
 
 // Extra
 export * from "./theme/ToogleThemeButton";
