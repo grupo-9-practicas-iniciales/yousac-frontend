@@ -46,6 +46,7 @@ export interface PostInterface {
     idUser: number;
     names: string;
     lastnames: string;
+    email: string;
   };
   section: {
     idSection: number;
@@ -158,4 +159,37 @@ export interface ApiChangePasswordResponse {
   ok: boolean,
   msg: string,
   errors: ApiListError[]
+}
+
+export interface CommentInterface {
+  idComment: number;
+  message: string;
+  createdAt: string;
+  user: {
+    idUser: number;
+    names: string;
+    lastnames: string;
+    email: string;
+  }
+}
+
+export interface ApiGetCommentsResponse {
+
+  ok: boolean,
+  msg: string,
+  errors: ApiListError[],
+  comments: CommentInterface[]
+
+}
+
+export interface ApiCreateCommentRequest {
+  idPost: number;
+  message: string;
+}
+
+export interface ApiCreateCommentResponse {
+  ok: boolean,
+  msg: string,
+  errors: ApiListError[],
+  comment: CommentInterface
 }
