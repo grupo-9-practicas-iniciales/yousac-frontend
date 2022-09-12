@@ -19,7 +19,7 @@ export const CreatePostPage = () => {
     const { createPost } = useCreatePost();
 
     return (
-        <div className="bg-white dark:bg-dark transition-colors">
+        <div className="bg-white dark:bg-dark transition-colors min-h-screen">
             <ScrollToTop />
             <Navbar />
 
