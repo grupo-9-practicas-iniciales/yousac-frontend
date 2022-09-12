@@ -13,12 +13,14 @@ type AvatarProps = {
   user: UserInterface;
   isUserOnline?: boolean;
   displayMenu?: boolean;
+  disabledProfileButton?: boolean;
 };
 
 export const Avatar = ({
   user,
   isUserOnline = false,
   displayMenu = false,
+  disabledProfileButton = false,
 }: AvatarProps) => {
   const { user: loguedUser, startLogout } = useAuthStore();
   const displayUserName = user.names[0] + user.lastnames[0];
@@ -32,7 +34,6 @@ export const Avatar = ({
             <>
               <Popover.Button>
                 <AvatarProfileButton
-                  onClick={() => setSelectedUser(user)}
                   isUserOnline={isUserOnline}
                   displayUserName={displayUserName}
                 />
@@ -49,7 +50,11 @@ export const Avatar = ({
               >
                 <Popover.Panel className="absolute z-50 right-0 mt-2 w-32 md:w-40 origin-top-right divide-y rounded-sm divide-gray-400 dark:divide-primary-dark-3/[0.1]  bg-white dark:bg-darkContrast shadow-lg dark:shadow-none ring-1 ring-black dark:ring-primary-dark-3/[0.1] ring-opacity-5  focus:outline-none">
                   <div className="py-1">
-                    <Link to={`/profile/user`} className="avatar-option-menu">
+                    <Link
+                      onClick={() => setSelectedUser(user)}
+                      to={`/profile/user`}
+                      className="avatar-option-menu"
+                    >
                       <CgProfile className="mr-2" />
                       Perfil
                     </Link>
@@ -73,11 +78,8 @@ export const Avatar = ({
           )}
         </Popover>
       ) : (
-        <Link to={"/profile/user"}>
-          <AvatarProfileButton
-            onClick={() => setSelectedUser(user)}
-            displayUserName={displayUserName}
-          />
+        <Link to={"/profile/user"} onClick={() => setSelectedUser(user)}>
+          <AvatarProfileButton displayUserName={displayUserName} />
         </Link>
       )}
     </>

@@ -15,3 +15,4 @@ export * from "./ui/card/CardPost";
 // Extra
 export * from "./theme/ToogleThemeButton";
 export * from "./ui/spinner/Spinner";
+export * from "./helpers/ScrollToTop";

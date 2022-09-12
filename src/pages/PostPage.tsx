@@ -3,6 +3,7 @@ import { CardPost, Navbar } from "../components";
 import { useContentStore } from "../hooks";
 
 import "animate.css";
+import { ScrollToTop } from "../components/helpers/ScrollToTop";
 
 export const PostPage = () => {
   const { selectedPost } = useContentStore();
@@ -13,6 +14,7 @@ export const PostPage = () => {
 
   return (
     <div className="bg-white dark:bg-dark transition-colors">
+      <ScrollToTop />
       <Navbar />
       <div
         className="flex mt-5 md:mt-7 p-10 md:p-16 lg:p-0 justify-center mx-auto min-h-screen w-full

@@ -28,7 +28,7 @@ export const GridCard = ({ users, posts }: GridCardProps) => {
     <div className="py-10">
       {users.map((user) => (
         <Card key={user.idUser}>
-          <CardUser user={user} />
+          <CardUser behavior="card" user={user} />
         </Card>
       ))}
     </div>
