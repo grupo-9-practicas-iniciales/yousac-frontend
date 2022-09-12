@@ -1,3 +1,5 @@
+import { UserInterface } from "../../api";
+
 export interface AuthState {
     status: Status;
     user: User;
@@ -6,13 +8,7 @@ export interface AuthState {
 
 type Status = | 'checking' | 'authenticated' | 'not-authenticated'
 
-export interface User {
-    names: string;
-    lastnames: string;
-    email: string;
-    idStudent: string;
-    idUser: string;
-    token: string;
+export interface User extends UserInterface {
 }
 
 export type authActionType =

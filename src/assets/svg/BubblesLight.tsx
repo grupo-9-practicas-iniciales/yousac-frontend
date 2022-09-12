@@ -1,12 +1,12 @@
 import { SVGProps } from "react";
 
-interface Props extends SVGProps<SVGSVGElement> {}
+interface Props extends SVGProps<SVGSVGElement> { }
 
 const BubblesLight = (props: Props) => (
   <>
     {/* Tiny */}
     <svg
-      className="absolute dark:hidden -top-10 md:top-24 right-8 md:right-16 w-[90px] md:w-[120px] rotate-[140deg]"
+      className="absolute dark:hidden -top-7 md:top-[106px] right-5 md:right-[33px] w-[95px] md:w-[124px] -rotate-[160deg]"
       width={159}
       height={159}
       viewBox="0 0 159 159"
@@ -54,8 +54,9 @@ const BubblesLight = (props: Props) => (
         </radialGradient>
       </defs>
     </svg>
+    {/* Large */}
     <svg
-      className="absolute dark:hidden -top-36 md:top-0 -left-16 md:left-0 w-[210px] md:w-[250px] rotate-[140deg]"
+      className="absolute dark:hidden -top-40 md:top-0 -left-24 md:left-0 w-[210px] md:w-[250px] "
       width={374}
       height={374}
       viewBox="0 0 374 374"
@@ -96,7 +97,7 @@ const BubblesLight = (props: Props) => (
           cy={0}
           r={1}
           gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(271.682 241.603) rotate(-137.772) scale(125.042)"
+          gradientTransform="translate(271.682 241.603) scale(125.042)"
         >
           <stop stopColor="white" />
           <stop offset={1} stopColor="white" stopOpacity={0} />

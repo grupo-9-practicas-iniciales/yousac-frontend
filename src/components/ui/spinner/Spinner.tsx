@@ -1,6 +1,6 @@
 import { LoaderIcon } from '../../../assets'
 
-export const AuthSpinner = () => {
+export const Spinner = () => {
     return (
         <main className="h-screen
     bg-light

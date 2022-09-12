@@ -9,8 +9,7 @@ export const testInitialUser: User = {
   lastnames: "",
   email: "",
   idStudent: "",
-  idUser: "",
-  token: "",
+  idUser: 0,
 };
 
 const Auth_INITIAL_STATE: AuthState = {
@@ -22,11 +21,14 @@ const Auth_INITIAL_STATE: AuthState = {
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, Auth_INITIAL_STATE);
 
-  const login = (user: User) => {
+  const login = (user: User, token: string = '') => {
     dispatch({
       type: "AUTH-login",
       payload: user,
     });
+
+    localStorage.setItem("auth-token", token);
+
   };
 
   const logout = (errorMsg: string | null) => {
@@ -34,6 +36,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       type: "AUTH-logout",
       payload: errorMsg,
     });
+
+    localStorage.removeItem("auth-token");
+
   };
 
   const clearErrorMsg = () => {
