@@ -1,15 +1,15 @@
-import { SearchCourseInterface } from "../../../../api";
+import { CourseInterface } from "../../../../api";
 
 type CardCourseProps = {
-  course: SearchCourseInterface;
+  course: CourseInterface;
 };
 
 export const CardCourse = ({ course }: CardCourseProps) => {
   return (
     <>
-      <div>
+      <div className="w-full">
         {`
-          ${course.code} - ${course.name} - 7 créditos
+          ${course.code} - ${course.name} - ${course.credits} créditos
           `}
       </div>
     </>
