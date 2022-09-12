@@ -193,3 +193,11 @@ export interface ApiCreateCommentResponse {
   errors: ApiListError[],
   comment: CommentInterface
 }
+
+export interface ApiCreatePostResponse {
+
+  ok: boolean,
+  msg: string,
+  errors: ApiListError[],
+  post: PostInterface
+}

@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { ApiCreatePostResponse } from '../api';
 import { useContentStore } from './';
 import { useApi } from './useApi';
+import { useNavigate } from 'react-router-dom';
 
 interface FormState {
     title: string;
@@ -10,8 +12,9 @@ interface FormState {
 
 export const useCreatePost = () => {
 
-    const { selectedIdSection, setSelectIdSection } = useContentStore();
-    const { response: createPostResponse, perfomFetch: perfomCreatePost } = useApi();
+    const { selectedIdSection, setSelectIdSection, setSelectedPost } = useContentStore();
+    const { response: createPostResponse, perfomFetch: perfomCreatePost } = useApi<ApiCreatePostResponse>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // * Clears id section when the component is mounted
@@ -27,7 +30,28 @@ export const useCreatePost = () => {
             return;
         }
 
+        perfomCreatePost({
+            url: '/post',
+            method: 'post',
+            body: {
+                title,
+                description,
+                idSection: selectedIdSection
+            }
+        })
+
     }
+
+    useEffect(() => {
+
+        if (createPostResponse) {
+            setSelectedPost(createPostResponse.post);
+            navigate('/post');
+        }
+
+    }, [createPostResponse])
+
+
 
     return {
         createPost,
