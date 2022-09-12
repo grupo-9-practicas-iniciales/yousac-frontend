@@ -4,10 +4,11 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { BubblesDark, BubblesLight } from "../assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessageField } from "../components/ui/textField/ErrorMessageField";
 import { useApi } from "../hooks";
 import { ApiUserCreateRequest, APIUserCreateResponse } from "../api";
+import { useEffect } from 'react';
 
 const formInitialState = {
   idStudent: "",
@@ -50,7 +51,8 @@ type FormState = typeof formInitialState;
 
 export const RegisterPage = () => {
 
-  const { isLoading, perfomFetch } = useApi<APIUserCreateResponse>();
+  const { isLoading, perfomFetch, response } = useApi<APIUserCreateResponse>();
+  const navigate = useNavigate();
 
   const onSubmit = ({
     idStudent,
@@ -76,6 +78,19 @@ export const RegisterPage = () => {
       body
     });
   };
+
+  useEffect(() => {
+
+    if (response) {
+      if (response.ok) {
+        navigate("/login", {
+          replace: true
+        });
+      }
+    }
+
+  }, [response])
+
 
   return (
     <>

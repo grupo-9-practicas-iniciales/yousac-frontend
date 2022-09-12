@@ -35,6 +35,7 @@ export const LoginPage = () => {
           <TextField
             label="Contraseña"
             placeholder="Password"
+            type="password"
             name="password"
           />
           <Button variant="secondary" type="submit">

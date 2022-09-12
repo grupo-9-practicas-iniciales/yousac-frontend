@@ -17,3 +17,5 @@ export * from "./icons/InfoIcon";
 export * from "./icons/EditIcon";
 export * from "./icons/WarningIcon";
 export * from "./icons/LoaderIcon";
+export * from './icons/DownArrowIcon2'
+export * from './icons/SearchIcon'
