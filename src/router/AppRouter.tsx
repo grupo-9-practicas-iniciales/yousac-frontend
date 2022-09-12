@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Spinner } from "../components";
 import { useCheckAuth } from "../hooks";
 import {
+  CreatePostPage,
   LandingPage,
   LoginPage,
   MainAppPage,
@@ -63,6 +64,15 @@ export const AppRouter = () => {
           element={
             <PrivateRoute>
               <PostPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/create/post"
+          element={
+            <PrivateRoute>
+              <CreatePostPage />
             </PrivateRoute>
           }
         />

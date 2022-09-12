@@ -11,6 +11,7 @@ export * from "./ui/select/Select";
 export * from "./ui/card/Card";
 export * from "./ui/card/CardUser";
 export * from "./ui/card/CardPost";
+export * from './ui/selectSection/SelectSection'
 
 // Extra
 export * from "./theme/ToogleThemeButton";
