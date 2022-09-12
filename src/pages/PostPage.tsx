@@ -1,12 +1,13 @@
 import { Navigate } from "react-router-dom";
 import { CardPost, Navbar } from "../components";
-import { useContentStore } from "../hooks";
+import { useContentStore, useNewTitle } from "../hooks";
 
 import "animate.css";
 import { ScrollToTop } from "../components/helpers/ScrollToTop";
 
 export const PostPage = () => {
   const { selectedPost } = useContentStore();
+  useNewTitle(selectedPost?.title);
 
   if (!selectedPost) {
     return <Navigate to="/app" />;

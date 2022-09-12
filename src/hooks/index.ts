@@ -7,3 +7,4 @@ export * from "./useForm";
 export * from "./useMediaQuery";
 export * from "./useTheme";
 export * from "./useRegister";
+export * from "./useNewTitle";
