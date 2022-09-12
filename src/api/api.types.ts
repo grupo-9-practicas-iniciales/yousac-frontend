@@ -171,5 +171,5 @@ export interface ApiGetAprovedCoursesResponse {
   ok: boolean,
   msg: string,
   errors: ApiListError[],
-  courses: CourseInterface[]
+  aprovedCourses: CourseInterface[]
 }
