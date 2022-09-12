@@ -16,7 +16,7 @@ export const GridCardMain = ({ users, posts }: GridCardProps) => {
     );
   } else if (users.length === 0 && posts.length > 0) {
     return (
-      <GridCardContainer>
+      <GridCardContainer width="w-5/6">
         {posts.map((post) => (
           <Card key={post.idPost}>
             <CardPost behavior="card" post={post} />

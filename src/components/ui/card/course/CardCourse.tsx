@@ -7,7 +7,7 @@ type CardCourseProps = {
 export const CardCourse = ({ course }: CardCourseProps) => {
   return (
     <>
-      <div className="w-full">
+      <div>
         {`
           ${course.code} - ${course.name} - ${course.credits} créditos
           `}
