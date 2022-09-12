@@ -9,7 +9,7 @@ import {
   GridCardContainer,
   CardCourse,
 } from "../components";
-import { useContentStore, useApi } from "../hooks";
+import { useContentStore, useApi, useNewTitle } from "../hooks";
 
 import { ApiGetAprovedCoursesResponse, CourseInterface } from "../api";
 
@@ -20,18 +20,18 @@ export const ProfilePage = () => {
     return <Navigate to="/app" />;
   }
 
+  useNewTitle(`Perfil de ${selectedUser.names} ${selectedUser.lastnames}`);
+
   const { response, perfomFetch } = useApi<ApiGetAprovedCoursesResponse>();
   const [aprovedCourses, setAprovedCourses] = useState<
     null | CourseInterface[]
   >(null);
 
   useEffect(() => {
-    if (!aprovedCourses) {
-      perfomFetch({
-        method: "get",
-        url: `/course/aproved/${selectedUser.idUser}`,
-      });
-    }
+    perfomFetch({
+      method: "get",
+      url: `/course/aproved/${selectedUser.idUser}`,
+    });
   }, [selectedUser]);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export const ProfilePage = () => {
             Cursos aprobados
           </h2>
 
-          {aprovedCourses ? (
+          {typeof aprovedCourses != undefined && aprovedCourses?.length ? (
             <GridCardContainer>
               {aprovedCourses?.map((course) => (
                 <Card key={course.idCourse} className="w-full">
@@ -64,7 +64,7 @@ export const ProfilePage = () => {
               ))}
             </GridCardContainer>
           ) : (
-            <p>No hay cursos aprobados</p>
+            <p className="text-center">No hay cursos aprobados :(</p>
           )}
         </div>
       </div>
