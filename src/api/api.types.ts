@@ -159,3 +159,17 @@ export interface ApiChangePasswordResponse {
   msg: string,
   errors: ApiListError[]
 }
+
+export interface CourseInterface {
+  idCourse: number;
+  name: string;
+  code: string;
+  credits: number;
+}
+
+export interface ApiGetAprovedCoursesResponse {
+  ok: boolean,
+  msg: string,
+  errors: ApiListError[],
+  courses: CourseInterface[]
+}

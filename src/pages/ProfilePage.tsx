@@ -4,6 +4,9 @@ import { BsFillPencilFill } from "react-icons/bs";
 
 import { ScrollToTop, Navbar, CardUser, Button } from "../components";
 import { useContentStore } from "../hooks";
+import { useApi } from '../hooks/useApi';
+import { useEffect, useState } from 'react';
+import { ApiGetAprovedCoursesResponse, CourseInterface } from "../api";
 
 export const ProfilePage = () => {
   const { selectedUser } = useContentStore();
@@ -11,6 +14,25 @@ export const ProfilePage = () => {
   if (!selectedUser) {
     return <Navigate to="/app" />;
   }
+
+  const { response, perfomFetch } = useApi<ApiGetAprovedCoursesResponse>();
+  const [aprovedCourses, setAprovedCourses] = useState<null | CourseInterface[]>(null)
+
+  useEffect(() => {
+    if (!aprovedCourses) {
+      perfomFetch({
+        method: 'get',
+        url: `/course/aproved/${selectedUser.idUser}`
+      });
+    }
+  }, [selectedUser])
+
+  useEffect(() => {
+    if (response) {
+      console.log(response)
+      setAprovedCourses(response.aprovedCourses)
+    }
+  }, [response])
 
   return (
     <div className="bg-white dark:bg-dark transition-colors">
