@@ -1,8 +1,12 @@
 import { Transition } from "@headlessui/react";
 import { Form, Formik } from "formik";
-import { Fragment } from "react";
-import { Button, Navbar, ScrollToTop, TextField } from "../components";
-import { SwitchButton } from "../components/ui/switch/SwitchButton";
+import {
+  Button,
+  Navbar,
+  ScrollToTop,
+  TextField,
+  SwitchButton,
+} from "../components";
 import { useNewTitle, useSettings } from "../hooks";
 
 export const SettingsPage = () => {
@@ -12,7 +16,7 @@ export const SettingsPage = () => {
   useNewTitle("Configuración");
 
   return (
-    <div className="bg-white dark:bg-dark transition-colors min-h-screen">
+    <div className="bg-white dark:bg-dark transition-colors min-h-screen anim">
       <ScrollToTop />
       <Navbar />
       <Formik initialValues={formInitialState} onSubmit={editBasicInfo}>
@@ -70,7 +74,7 @@ export const SettingsPage = () => {
                 label="Confirmar nueva contraseña"
               />
             </Transition>
-            <Button variant="tertiary" type="submit">
+            <Button variant="secondary" type="submit">
               Guardar cambios
             </Button>
           </div>
