@@ -31,10 +31,10 @@ export interface ApiSearchUserResponse {
 
 export interface UserInterface {
   idUser: number;
-  idStudent?: string;
+  idStudent: string;
   names: string;
   lastnames: string;
-  email?: string;
+  email: string;
 }
 
 export interface PostInterface {
@@ -200,4 +200,11 @@ export interface ApiCreatePostResponse {
   msg: string,
   errors: ApiListError[],
   post: PostInterface
+}
+
+export interface ApiGetUserByIdResponse {
+  ok: boolean,
+  msg: string,
+  errors: ApiListError[],
+  user: UserInterface
 }

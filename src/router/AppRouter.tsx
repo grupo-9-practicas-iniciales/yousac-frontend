@@ -9,6 +9,7 @@ import {
   PostPage,
   ProfilePage,
   RegisterPage,
+  SettingsPage,
 } from "../pages";
 import { PublicRoute, PrivateRoute } from "./";
 import { RecoveryRouter } from "./RecoveryRouter";
@@ -55,6 +56,15 @@ export const AppRouter = () => {
           element={
             <PrivateRoute>
               <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute>
+              <SettingsPage />
             </PrivateRoute>
           }
         />

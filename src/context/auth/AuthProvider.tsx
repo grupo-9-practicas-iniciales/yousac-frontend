@@ -53,6 +53,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     });
   };
 
+  const updateUserInfo = (user: User) => {
+    dispatch({
+      type: 'AUTH-update-user-info',
+      payload: user,
+    });
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -62,6 +69,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         logout,
         clearErrorMsg,
         checkingAuth,
+        updateUserInfo
       }}
     >
       {children}

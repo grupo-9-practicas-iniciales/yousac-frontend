@@ -16,3 +16,4 @@ export type authActionType =
     | { type: 'AUTH-login', payload: User }
     | { type: 'AUTH-logout', payload: string | null }
     | { type: 'AUTH-clear-errorMsg' }
+    | { type: 'AUTH-update-user-info', payload: User }

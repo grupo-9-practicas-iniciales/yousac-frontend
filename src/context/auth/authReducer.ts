@@ -36,6 +36,12 @@ export const authReducer = (
         errorMsg: null,
       };
 
+    case "AUTH-update-user-info":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
     default:
       return state;
   }

@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { ApiAuthLoginRequest, ApiAuthLoginResponse, ApiAuthRevalidateResponse, yousacApi } from "../api";
+import { ApiAuthLoginRequest, ApiAuthLoginResponse, ApiAuthRevalidateResponse, ApiGetUserByIdResponse, yousacApi } from "../api";
 
 import { AuthContext } from "../context/auth";
 import toast from 'react-hot-toast';
 
 export const useAuthStore = () => {
-  const { status, user, errorMsg, checkingAuth, login, logout, clearErrorMsg } =
+  const { status, user, errorMsg, checkingAuth, login, logout, clearErrorMsg, updateUserInfo } =
     useContext(AuthContext);
 
 
@@ -59,6 +59,15 @@ export const useAuthStore = () => {
     }
   };
 
+  const startUpdateUserInfo = async () => {
+    try {
+      const { data } = await yousacApi.get<ApiGetUserByIdResponse>(`/user/${user.idUser}`);
+      updateUserInfo(data.user);
+    } catch (error) {
+
+    }
+  }
+
   return {
     status,
     user,
@@ -67,5 +76,6 @@ export const useAuthStore = () => {
     startLogout,
     clearErrorMsg,
     checkAuth,
+    startUpdateUserInfo
   };
 };

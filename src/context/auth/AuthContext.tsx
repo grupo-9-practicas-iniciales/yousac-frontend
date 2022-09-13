@@ -6,6 +6,7 @@ interface ContextProps extends AuthState {
     logout: (errorMsg: string | null) => void;
     clearErrorMsg: () => void;
     checkingAuth: () => void;
+    updateUserInfo: (user: User) => void;
 }
 
 export const AuthContext = createContext({} as ContextProps);
