@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { RocketSVG } from "../assets";
 import { AppLogo, WavyFooter } from "../components";
+import { useNewTitle } from "../hooks";
 
 export const LandingPage = () => {
+  useNewTitle("");
   return (
     <>
       <main className="min-h-screen bg-light dark:bg-dark overflow-x-hidden transition-colors">

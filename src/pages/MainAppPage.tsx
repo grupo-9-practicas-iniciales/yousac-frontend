@@ -2,9 +2,11 @@ import { SearchSection, WavyFooter, Navbar, GridCardMain } from "../components";
 import { useContentStore, useApi } from "../hooks";
 import { useEffect } from "react";
 import { ApiSearchPostResponse } from "../api";
+import { useNewTitle } from '../hooks/useNewTitle';
 
 export const MainAppPage = () => {
   const { posts, users, selectedIdSection, setPosts } = useContentStore();
+  useNewTitle("Inicio")
   const { perfomFetch, response } = useApi<ApiSearchPostResponse>();
   useEffect(() => {
     // * SEARCH POSTS

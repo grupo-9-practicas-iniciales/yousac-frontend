@@ -41,6 +41,11 @@ export const ProfilePage = () => {
     }
   }, [response]);
 
+  const totalCredits = aprovedCourses?.reduce(
+    (total, course) => total + course.credits,
+    0
+  );
+
   return (
     <div className="bg-white dark:bg-dark transition-colors">
       <ScrollToTop />
@@ -56,13 +61,18 @@ export const ProfilePage = () => {
           </h2>
 
           {typeof aprovedCourses != undefined && aprovedCourses?.length ? (
-            <GridCardContainer>
-              {aprovedCourses?.map((course) => (
-                <Card key={course.idCourse} className="w-full">
-                  <CardCourse course={course} />
-                </Card>
-              ))}
-            </GridCardContainer>
+            <>
+              <GridCardContainer>
+                {aprovedCourses?.map((course) => (
+                  <Card key={course.idCourse} className="w-full">
+                    <CardCourse course={course} />
+                  </Card>
+                ))}
+              </GridCardContainer>
+              <p className="text-center text-xl font-semibold">
+                Total de créditos: {totalCredits}
+              </p>
+            </>
           ) : (
             <p className="text-center">No hay cursos aprobados :(</p>
           )}
