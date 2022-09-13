@@ -42,12 +42,7 @@ export interface PostInterface {
   title: string;
   description: string;
   createdAt: string;
-  user: {
-    idUser: number;
-    names: string;
-    lastnames: string;
-    email: string;
-  };
+  user: UserInterface;
   section: {
     idSection: number;
     section: string;
@@ -164,12 +159,7 @@ export interface CommentInterface {
   idComment: number;
   message: string;
   createdAt: string;
-  user: {
-    idUser: number;
-    names: string;
-    lastnames: string;
-    email: string;
-  };
+  user: UserInterface;
 }
 
 export interface ApiGetCommentsResponse {

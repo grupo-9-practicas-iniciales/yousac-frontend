@@ -16,9 +16,13 @@ export * from "./ui/card/base/Card";
 export * from "./ui/card/user/CardUser";
 export * from "./ui/card/post/CardPost";
 export * from "./ui/card/course/CardCourse";
+export * from "./ui/card/comment/CardComment";
+export * from "./ui/card/comment/CardCreateComment";
+
 
 export * from "./ui/card/grid/GridCardMain";
 export * from "./ui/card/grid/GridCardContainer";
+export * from "./ui/card/grid/GridCardComment";
 
 // Extra
 export * from "./theme/ToogleThemeButton";
