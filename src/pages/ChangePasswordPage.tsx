@@ -4,9 +4,7 @@ import { Form, Formik } from "formik";
 import { BubblesDark, BubblesLight } from "../assets";
 import { Button, TextField, ErrorMessageField } from "../components";
 import { useParams, Navigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useApi, useChangePassword, useNewTitle } from "../hooks";
-import toast from "react-hot-toast";
+import { useChangePassword, useNewTitle } from "../hooks";
 
 const changePasswordFormSchema = Yup.object().shape({
   password: Yup.string()

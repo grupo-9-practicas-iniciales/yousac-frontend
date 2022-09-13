@@ -23,7 +23,9 @@ export const SendEmailRecoveryPage = () => {
   return (
     <>
       <main className="flex flex-col justify-center items-center bg-light dark:bg-dark min-h-screen">
-        <h1>Recupera tu contraseña</h1>
+        <h1 className="font-semibold text-primary-light-1 dark:text-white text-xl md:text-2xl lg:text-3xl">
+          Recupera tu contraseña
+        </h1>
         <Formik initialValues={{ email: "" }} onSubmit={onSubmit}>
           <Form className="flex flex-col w-8/12 md:w-4/12 my-10 space-y-5">
             <TextField type="email" name="email" placeholder="Email" />
