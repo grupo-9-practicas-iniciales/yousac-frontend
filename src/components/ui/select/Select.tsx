@@ -1,5 +1,5 @@
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
 import { CheckIcon, DownArrowIcon2 } from "../../../assets";
 import { SelectOptionsInterface } from "./Select.types";
 

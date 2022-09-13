@@ -1,19 +1,17 @@
-import { useTheme } from "../../hooks"
-import { MoonIcon } from '../../assets/icons/MoonIcon';
-import { SunIcon } from '../../assets/icons/SunIcon';
-
+import { useTheme } from "../../hooks";
+import { MoonIcon, SunIcon } from "../../assets";
 
 interface ToogleThemeButtonProps {
-    fab?: boolean //fab = Floating Action button
+  fab?: boolean; //fab = Floating Action button
 }
 
 export const ToogleThemeButton = ({ fab = false }: ToogleThemeButtonProps) => {
+  const { darkModeEnabled, toogleDarkMode } = useTheme();
 
-    const { darkModeEnabled, toogleDarkMode } = useTheme();
-
-    return (
-        <button onClick={() => toogleDarkMode()}
-            className={`
+  return (
+    <button
+      onClick={() => toogleDarkMode()}
+      className={`
             z-50
         cursor-pointer
         h-[40px] lg:h-[45px]
@@ -24,17 +22,19 @@ export const ToogleThemeButton = ({ fab = false }: ToogleThemeButtonProps) => {
         flex
         justify-center
         items-center
-        ${darkModeEnabled ? 'border-info-dark-3 bg-darkContrast' : 'border-warning-light-4 bg-white '}
-        ${fab ? 'fixed right-4 bottom-4' : 'relative'}
-        `} >
-            {
-                darkModeEnabled
-                    ? (
-                        <MoonIcon className="text-white text-[20px] lg:text-[25px]" />
-                    ) : (
-                        <SunIcon className="text-warning-light-4 text-[20px] lg:text-[25px]" />
-                    )
-            }
-        </button>
-    )
-}
+        ${
+          darkModeEnabled
+            ? "border-info-dark-3 bg-darkContrast"
+            : "border-warning-light-4 bg-white "
+        }
+        ${fab ? "fixed right-4 bottom-4" : "relative"}
+        `}
+    >
+      {darkModeEnabled ? (
+        <MoonIcon className="text-white text-[20px] lg:text-[25px]" />
+      ) : (
+        <SunIcon className="text-warning-light-4 text-[20px] lg:text-[25px]" />
+      )}
+    </button>
+  );
+};

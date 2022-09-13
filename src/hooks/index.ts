@@ -15,3 +15,4 @@ export * from './useComment'
 export * from './useCreatePost'
 export * from './useSettings'
 export * from "./useNewTitle";
+export * from './useEditCourses'

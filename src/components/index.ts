@@ -18,6 +18,7 @@ export * from "./ui/card/post/CardPost";
 export * from "./ui/card/course/CardCourse";
 export * from "./ui/card/comment/CardComment";
 export * from "./ui/card/comment/CardCreateComment";
+export * from './ui/card/editCourse/EditCourseCard'
 
 
 export * from "./ui/card/grid/GridCardMain";

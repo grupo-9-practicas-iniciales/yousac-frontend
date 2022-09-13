@@ -8,7 +8,7 @@ export const SendEmailRecoveryPage = () => {
   const { perfomFetch } = useApi();
 
   const onSubmit = ({ email }: any) => {
-    console.log(email);
+    
 
     perfomFetch({
       url: "/auth/recovery",

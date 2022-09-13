@@ -7,16 +7,20 @@ import {
   TextField,
   SwitchButton,
 } from "../components";
-import { useNewTitle, useSettings } from "../hooks";
+import { useNewTitle, userEditCourses, useSettings } from "../hooks";
+import { EditCourseCard } from "../components/ui/card/editCourse/EditCourseCard";
 
 export const SettingsPage = () => {
   const { formInitialState, editBasicInfo, changepassword, setChangepassword } =
     useSettings();
 
+  const { aprovedCourses, unaprovedCourses, moveToAproved, moveToUnaproved } =
+    userEditCourses();
+
   useNewTitle("Configuración");
 
   return (
-    <div className="bg-white dark:bg-dark transition-colors min-h-screen anim">
+    <main className="bg-white dark:bg-dark transition-colors min-h-screen anim">
       <ScrollToTop />
       <Navbar />
       <Formik initialValues={formInitialState} onSubmit={editBasicInfo}>
@@ -80,6 +84,47 @@ export const SettingsPage = () => {
           </div>
         </Form>
       </Formik>
-    </div>
+      <section className="w-5/6 mx-auto mt-5 pb-16 flex flex-col gap-y-5 ">
+        <h1 className="text-xl font-bold ">Editar cursos aprobados</h1>
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-4 gap-x-2 gap-y-5">
+          <div>
+            <h2 className="text-lg font-semibold text-center mb-3">
+              Cursos no aprobados
+            </h2>
+            {unaprovedCourses.map((course) => (
+              <EditCourseCard
+                onClick={moveToAproved}
+                key={course.idCourse}
+                type="unaproved"
+                course={course}
+              />
+            ))}
+            {unaprovedCourses.length === 0 && (
+              <p className="text-center dark:text-white my-5 font-normal">
+                No hay cursos no aprobados
+              </p>
+            )}
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold text-center mb-3">
+              Cursos aprobados
+            </h2>
+            {aprovedCourses.map((course) => (
+              <EditCourseCard
+                onClick={moveToUnaproved}
+                key={course.idCourse}
+                type="aproved"
+                course={course}
+              />
+            ))}
+            {aprovedCourses.length === 0 && (
+              <p className="text-center my-5 font-normal dark:text-white">
+                No hay cursos aprobados
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };

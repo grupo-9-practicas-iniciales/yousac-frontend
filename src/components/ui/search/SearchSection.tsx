@@ -1,5 +1,6 @@
-import { Select } from "../../";
 import { useState } from "react";
+
+import { Select } from "../../";
 import { SelectOptionsInterface } from "../select/Select.types";
 import { FirstFilter } from "./FirstFilter";
 
