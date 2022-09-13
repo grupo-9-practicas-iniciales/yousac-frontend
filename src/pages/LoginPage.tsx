@@ -25,7 +25,7 @@ export const LoginPage = () => {
 
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
-      <h1 className="font-semibold dark:text-white text-xl md:text-2xl lg:text-3xl">
+      <h1 className="font-semibold text-primary-light-1 dark:text-white text-xl md:text-2xl lg:text-3xl">
         Iniciar Sesión
       </h1>
       <Formik initialValues={formInitialState} onSubmit={onSubmit}>
