@@ -3,10 +3,10 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { BubblesDark, BubblesLight } from "../assets";
 import { Button, TextField, ErrorMessageField } from "../components";
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useApi, useChangePassword } from "../hooks";
-import toast from 'react-hot-toast';
+import { useApi, useChangePassword, useNewTitle } from "../hooks";
+import toast from "react-hot-toast";
 
 const changePasswordFormSchema = Yup.object().shape({
   password: Yup.string()
@@ -19,19 +19,19 @@ const changePasswordFormSchema = Yup.object().shape({
 });
 
 export const ChangePasswordPage = () => {
-
   const { token } = useParams();
 
   if (!token) {
-    return <Navigate to='/recovery' />
+    return <Navigate to="/recovery" />;
   }
 
   const { isCheking, changePassword } = useChangePassword(token);
 
-
   const onSubmit = ({ password, confirmPassword }: any) => {
     changePassword(password, confirmPassword);
   };
+
+  useNewTitle("Cambiar Contraseña");
 
   return (
     <main className="flex flex-col justify-center items-center bg-light dark:bg-dark min-h-screen">

@@ -1,7 +1,7 @@
-import { UserInterface } from "../../../api";
-import { Avatar } from "../../";
+import { UserInterface } from "../../../../api";
+import { Avatar } from "../../..";
 import { Link } from "react-router-dom";
-import { useContentStore } from "../../../hooks";
+import { useContentStore } from "../../../../hooks";
 
 type CardUserProps = {
   user: UserInterface;
@@ -19,25 +19,26 @@ export const CardUser = ({ user, behavior }: CardUserProps) => {
           <h3 className="font-semibold">
             {user.names} {user.lastnames}
           </h3>
-          <p>
-            <strong>Registro académico: </strong>
-            {user.idStudent}
-          </p>
+          <div className="flex justify-between space-x-5">
+            <p>
+              <strong>Registro académico: </strong>
+              {user.idStudent}
+            </p>
+            {behavior === "card" && (
+              <Link
+                onClick={() => setSelectedUser(user)}
+                to={`/profile/user`}
+                className="text-info-dark-1"
+              >
+                Ver perfil
+              </Link>
+            )}
+          </div>
           {behavior === "default" && (
             <p className="p-0">
               <strong>Email: </strong>
               {user.email}
             </p>
-          )}
-
-          {behavior === "card" && (
-            <Link
-              onClick={() => setSelectedUser(user)}
-              to={`/profile/user`}
-              className="text-info-dark-1"
-            >
-              Ver perfil
-            </Link>
           )}
         </div>
       </div>

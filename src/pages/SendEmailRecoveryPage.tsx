@@ -1,23 +1,25 @@
 import { Form, Formik } from "formik";
 import { BubblesDark, BubblesLight } from "../assets";
 import { Button, TextField, WavyFooter } from "../components";
-import { useApi } from '../hooks/useApi';
+import { useNewTitle } from "../hooks";
+import { useApi } from "../hooks/useApi";
 
 export const SendEmailRecoveryPage = () => {
-
   const { perfomFetch } = useApi();
 
   const onSubmit = ({ email }: any) => {
     console.log(email);
 
     perfomFetch({
-      url: '/auth/recovery',
-      method: 'post',
+      url: "/auth/recovery",
+      method: "post",
       body: {
-        email
-      }
-    })
+        email,
+      },
+    });
   };
+
+  useNewTitle("Recuperar Contraseña");
   return (
     <>
       <main className="flex flex-col justify-center items-center bg-light dark:bg-dark min-h-screen">

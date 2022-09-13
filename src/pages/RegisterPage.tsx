@@ -6,9 +6,9 @@ import * as Yup from "yup";
 import { BubblesDark, BubblesLight } from "../assets";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessageField } from "../components/ui/textField/ErrorMessageField";
-import { useApi } from "../hooks";
+import { useApi, useNewTitle } from "../hooks";
 import { ApiUserCreateRequest, APIUserCreateResponse } from "../api";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const formInitialState = {
   idStudent: "",
@@ -50,7 +50,6 @@ const registerFormSchema = Yup.object().shape({
 type FormState = typeof formInitialState;
 
 export const RegisterPage = () => {
-
   const { isLoading, perfomFetch, response } = useApi<APIUserCreateResponse>();
   const navigate = useNavigate();
 
@@ -62,7 +61,6 @@ export const RegisterPage = () => {
     password,
     confirmPassword,
   }: FormState) => {
-
     const body: ApiUserCreateRequest = {
       idStudent,
       names,
@@ -70,27 +68,26 @@ export const RegisterPage = () => {
       email,
       password,
       password2: confirmPassword,
-    }
+    };
 
     perfomFetch({
       url: "/user/create",
       method: "post",
-      body
+      body,
     });
   };
 
   useEffect(() => {
-
     if (response) {
       if (response.ok) {
         navigate("/login", {
-          replace: true
+          replace: true,
         });
       }
     }
+  }, [response]);
 
-  }, [response])
-
+  useNewTitle("Registro");
 
   return (
     <>
