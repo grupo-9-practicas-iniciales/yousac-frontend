@@ -21,7 +21,6 @@ export const useCreatePost = () => {
         setSelectIdSection('');
     }, [])
 
-    console.log(selectedIdSection);
 
     const createPost = ({ title, description }: FormState) => {
 

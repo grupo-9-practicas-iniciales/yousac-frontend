@@ -40,7 +40,6 @@ export const userEditCourses = () => {
 
             toast.success('Marcado como curso aprobado')
         } catch (error) {
-            console.log(error)
             toast.error('Hubo un error al marcar como aprobado')
         }
     }
@@ -55,7 +54,7 @@ export const userEditCourses = () => {
 
             toast.success('Marcado como curso no aprobado')
         } catch (error) {
-            console.log(error)
+
             toast.error('Hubo un error al marcar como no aprobado')
         }
     }

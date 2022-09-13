@@ -1,24 +1,21 @@
-import { CourseSearch } from "./CourseSearch";
-import { SearchLatest } from "./SearchLatest";
-import { TeacherSearch } from "./TeacherSearch";
+import { CourseSearch, SearchLatest, TeacherSearch } from "./";
 
 interface SecondFilterProps {
-    id: string;
+  id: string;
 }
 
 export const SecondFilter = ({ id }: SecondFilterProps) => {
-    if (id == '1') {
-        return <CourseSearch />
-    }
+  if (id == "1") {
+    return <CourseSearch />;
+  }
 
-    if (id == '2') {
+  if (id == "2") {
+    return <TeacherSearch />;
+  }
 
-        return <TeacherSearch />
-    }
+  if (id == "3") {
+    return <SearchLatest />;
+  }
 
-    if (id == '3') {
-        return <SearchLatest />
-    }
-
-    return <CourseSearch />
-}
+  return <CourseSearch />;
+};

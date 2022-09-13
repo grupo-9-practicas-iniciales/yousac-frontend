@@ -1,6 +1,5 @@
-
 import { CourseInterface } from "../../../../api";
-import { Button } from "../../button/Button";
+import { Button } from "../../../";
 
 type CardCourseProps = {
     course: CourseInterface;

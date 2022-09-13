@@ -30,7 +30,6 @@ export const useAuthStore = () => {
       }
       logout(msg);
     } catch (error) {
-      console.log(error);
       toast.error("Credenciales incorrectas");
       logout("Error en la autenticación");
     }
@@ -54,7 +53,6 @@ export const useAuthStore = () => {
 
       logout(null);
     } catch (error) {
-      console.log(error);
       logout("Error en la autenticación");
     }
   };

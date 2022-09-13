@@ -1,11 +1,10 @@
-import { Form, Formik } from 'formik';
-import { TextField } from '../..';
-import { SearchIcon } from '../../../assets';
-import { Button } from '../button/Button';
-import { useApi } from '../../../hooks/useApi';
-import { ApiSearchUserResponse } from '../../../api/api.types';
-import { useContentStore } from '../../../hooks';
 import { useEffect } from 'react';
+
+import { Form, Formik } from 'formik';
+import { TextField, Button } from '../..';
+import { SearchIcon } from '../../../assets';
+import { ApiSearchUserResponse } from '../../../api/api.types';
+import { useContentStore, useApi } from '../../../hooks';
 
 const formInitialState = {
     idStudent: ''

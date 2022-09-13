@@ -1,6 +1,7 @@
-import { UserInterface } from "../../../../api";
-import { Avatar } from "../../..";
 import { Link } from "react-router-dom";
+
+import { Avatar } from "../../..";
+import { UserInterface } from "../../../../api";
 import { useContentStore } from "../../../../hooks";
 
 type CardUserProps = {
@@ -13,7 +14,7 @@ export const CardUser = ({ user, behavior }: CardUserProps) => {
 
   return (
     <>
-      <div className="flex space-x-3 md:space-x-4 lg:space-x-5">
+      <div className="flex space-x-3 md:space-x-4 lg:space-x-5 dark:text-white">
         {behavior === "card" && <Avatar user={user} />}
         <div className="flex flex-col text-sm md:text-base text-left w-full">
           <h3 className="font-semibold">

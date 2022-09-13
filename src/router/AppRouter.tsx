@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
-import { Spinner } from "../components";
+import { Routes, Route, Link } from "react-router-dom";
+import { AddIcon } from "../assets";
+import { Button, Spinner } from "../components";
 import { useCheckAuth } from "../hooks";
 import {
   CreatePostPage,
@@ -23,6 +24,17 @@ export const AppRouter = () => {
 
   return (
     <>
+      {status === "authenticated" && (
+        <Button
+          className="h-[40px] lg:h-[45px]
+          w-[40px] lg:w-[45px] fixed right-4 bottom-14 flex justify-center items-center rounded-[50%] my-5"
+          variant="fourth"
+        >
+          <Link to="/create/post">
+            <AddIcon className="text-3xl" />
+          </Link>
+        </Button>
+      )}
       <Routes>
         <Route
           path="/login"

@@ -54,7 +54,6 @@ export const useChangePassword = (token: string) => {
         toast.dismiss()
 
         const update_url = `${import.meta.env.VITE_API_URL}/user/update`
-        console.log(update_url)
 
         try {
             const { data } = await axios.put<ApiChangePasswordResponse>(update_url,
@@ -67,7 +66,6 @@ export const useChangePassword = (token: string) => {
             toast.success(data.msg)
             navigate('/login')
         } catch (error) {
-            console.log(error)
             toast.error('Algo salio mal, puede que tu token haya expirado 😥')
             navigate('/recovery', {
                 replace: true
