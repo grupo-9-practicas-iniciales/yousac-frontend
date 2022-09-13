@@ -1,21 +1,17 @@
-import { useAuthStore } from "../hooks/useAuthStore";
-import { Navbar } from "../components/ui/navbar/Navbar";
-import { SearchSection, WavyFooter } from "../components";
-import { useContentStore } from "../hooks/useContentStore";
-import { useEffect, useState } from 'react';
-import { useApi } from "../hooks/useApi";
+import { SearchSection, WavyFooter, Navbar, GridCardMain } from "../components";
+import { useContentStore, useApi } from "../hooks";
+import { useEffect } from "react";
 import { ApiSearchPostResponse } from "../api";
-import { GridCard } from "../components/ui/card/GridCard";
+import { useNewTitle } from '../hooks/useNewTitle';
 
 export const MainAppPage = () => {
-  const { user } = useAuthStore();
   const { posts, users, selectedIdSection, setPosts } = useContentStore();
+  useNewTitle("Inicio")
   const { perfomFetch, response } = useApi<ApiSearchPostResponse>();
   useEffect(() => {
     // * SEARCH POSTS
 
     if (selectedIdSection != "") {
-
       perfomFetch({
         url: `/search?param=post`,
         method: "post",
@@ -29,7 +25,7 @@ export const MainAppPage = () => {
   // * FIRST LOAD (LATEST POSTS)
   useEffect(() => {
     // * Dont fetch if there is a search or if is already loaded a post or user
-    if (selectedIdSection == '' && posts.length == 0 && users.length == 0) {
+    if (selectedIdSection == "" && posts.length == 0 && users.length == 0) {
       perfomFetch({
         url: `/search`,
         method: "post",
@@ -50,7 +46,7 @@ export const MainAppPage = () => {
         <Navbar />
         <div className="flex flex-col justify-center items-center mb-10">
           <SearchSection />
-          <GridCard posts={posts} users={users} />
+          <GridCardMain posts={posts} users={users} />
         </div>
       </main>
       <WavyFooter />

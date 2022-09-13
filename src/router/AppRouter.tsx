@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import { Spinner } from "../components";
 import { useCheckAuth } from "../hooks";
 import {
+  CreatePostPage,
   LandingPage,
   LoginPage,
   MainAppPage,
   PostPage,
   ProfilePage,
   RegisterPage,
+  SettingsPage,
 } from "../pages";
 import { PublicRoute, PrivateRoute } from "./";
 import { RecoveryRouter } from "./RecoveryRouter";
@@ -59,10 +61,28 @@ export const AppRouter = () => {
         />
 
         <Route
+          path="/settings"
+          element={
+            <PrivateRoute>
+              <SettingsPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
           path="/post"
           element={
             <PrivateRoute>
               <PostPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/create/post"
+          element={
+            <PrivateRoute>
+              <CreatePostPage />
             </PrivateRoute>
           }
         />

@@ -6,3 +6,5 @@ export * from "./SendEmailRecoveryPage";
 export * from "./ChangePasswordPage";
 export * from './ProfilePage';
 export * from "./PostPage";
+export * from './CreatePostPage'
+export * from './SettingsPage'

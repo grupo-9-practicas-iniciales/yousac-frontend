@@ -1,12 +1,13 @@
-import { PostInterface, UserInterface } from "../../../api";
-import { CardPost, CardUser, Card } from "../../";
+import { PostInterface, UserInterface } from "../../../../api";
+import { CardPost, CardUser, Card } from "../../..";
+import { GridCardContainer } from "./GridCardContainer";
 
 type GridCardProps = {
   users: UserInterface[];
   posts: PostInterface[];
 };
 
-export const GridCard = ({ users, posts }: GridCardProps) => {
+export const GridCardMain = ({ users, posts }: GridCardProps) => {
   if (users.length === 0 && posts.length === 0) {
     return (
       <>
@@ -15,17 +16,17 @@ export const GridCard = ({ users, posts }: GridCardProps) => {
     );
   } else if (users.length === 0 && posts.length > 0) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 w-5/6">
+      <GridCardContainer width="w-5/6">
         {posts.map((post) => (
           <Card key={post.idPost}>
             <CardPost behavior="card" post={post} />
           </Card>
         ))}
-      </div>
+      </GridCardContainer>
     );
   }
   return (
-    <div className="py-10">
+    <div className="py-10 w-5/6">
       {users.map((user) => (
         <Card key={user.idUser}>
           <CardUser behavior="card" user={user} />
