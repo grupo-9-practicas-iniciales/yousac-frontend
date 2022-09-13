@@ -16,7 +16,7 @@ export interface ApiAuthLoginResponse {
   errors: ApiListError[];
 }
 
-export interface ApiAuthRevalidateResponse extends ApiAuthLoginResponse {}
+export interface ApiAuthRevalidateResponse extends ApiAuthLoginResponse { }
 
 export interface ApiSearchUserRequest {
   idStudent: string;
@@ -206,4 +206,11 @@ export interface ApiGetAprovedCoursesResponse {
   msg: string;
   errors: ApiListError[];
   aprovedCourses: CourseInterface[];
+}
+
+export interface ApiGetUnaprovedCoursesResponse {
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+  unaprovedCourses: CourseInterface[];
 }

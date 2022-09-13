@@ -1,8 +1,7 @@
 import { SearchSection, WavyFooter, Navbar, GridCardMain } from "../components";
-import { useContentStore, useApi } from "../hooks";
+import { useContentStore, useApi, useNewTitle } from "../hooks";
 import { useEffect } from "react";
 import { ApiSearchPostResponse } from "../api";
-import { useNewTitle } from '../hooks/useNewTitle';
 
 export const MainAppPage = () => {
   const { posts, users, selectedIdSection, setPosts } = useContentStore();
