@@ -175,12 +175,12 @@ export const RegisterPage = () => {
               </Button>
               <div className="flex flex-col justify-center text-center text-xs tracking-wide">
                 <p className="mt-6">
-                  <span className="font-light text-primary-light-1">
+                  <span className="font-light md:text-base text-primary-light-1 dark:text-white">
                     ¿Ya tienes cuenta?{" "}
                   </span>
                   <Link
                     to="/login"
-                    className="font-semibold text-primary-light-1 font-base"
+                    className="font-semibold md:text-base text-primary-light-1 dark:text-white"
                   >
                     Inicia sesión aquí
                   </Link>{" "}

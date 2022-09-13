@@ -2,7 +2,7 @@ import { Waves1SVG } from "../../../assets";
 
 export const WavyFooter = () => {
   return (
-    <footer className="h-[10vh] bg-wavy-footer w-full">
+    <footer className="h-[10vh] self-end bg-wavy-footer w-full">
       <Waves1SVG
         className="w-full"
         preserveAspectRatio="none"
