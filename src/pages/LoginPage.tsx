@@ -25,7 +25,9 @@ export const LoginPage = () => {
 
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-white dark:bg-dark transition-colors duration-[.2]">
-      <h1>Iniciar Sesión</h1>
+      <h1 className="font-semibold dark:text-white text-xl md:text-2xl lg:text-3xl">
+        Iniciar Sesión
+      </h1>
       <Formik initialValues={formInitialState} onSubmit={onSubmit}>
         <Form className="flex flex-col items-center justify-center w-80 space-y-4 mx-4 p-2">
           <TextField
@@ -46,19 +48,19 @@ export const LoginPage = () => {
       </Formik>
       <div className="flex flex-col justify-center text-center text-xs tracking-wide">
         <p className="mt-6">
-          <span className="font-light text-primary-light-1">
+          <span className="font-light md:text-base text-primary-light-1 dark:text-white">
             ¿No tienes cuenta?{" "}
           </span>
           <Link
             to="/register"
-            className="font-semibold text-primary-light-1 font-base"
+            className="font-semibold md:text-base text-primary-light-1  dark:text-white"
           >
             Crear cuenta
           </Link>{" "}
         </p>
         <Link
           to="/recovery"
-          className="font-semibold text-primary-light-1 font-base mt-6"
+          className="font-semibold md:text-base text-primary-light-1 mt-6 dark:text-white"
         >
           Recuperar contraseña
         </Link>
