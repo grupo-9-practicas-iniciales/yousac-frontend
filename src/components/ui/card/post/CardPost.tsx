@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Avatar } from "../../";
-import { PostInterface } from "../../../api";
-import { formatDateToWords } from "../../../utils";
-import { useContentStore } from "../../../hooks/useContentStore";
+import { Avatar } from "../../..";
+import { PostInterface } from "../../../../api";
+import { formatDateToWords } from "../../../../utils";
+import { useContentStore } from "../../../../hooks";
 
 type CardPostProps = {
   post: PostInterface;
@@ -33,10 +33,10 @@ export const CardPost = ({ post, behavior }: CardPostProps) => {
             }`}
         >
           <h3>{post.section.course?.name}</h3>
-          <p className="text-gray-100">
+          <p className="text-gray-100 dark:text-white">
             {`${post.user.names} ${post.user.lastnames}`}
           </p>
-          <p>{`${postDate}`}</p>
+          <p className="dark:text-white/40">{`${postDate}`}</p>
         </div>
       </div>
       <h4
@@ -89,7 +89,7 @@ export const CardPost = ({ post, behavior }: CardPostProps) => {
         </div>
       </div>
       {behavior === "default" && (
-        <div className="w-full text-justify my-10 text-sm md:text-base lg:text-xl">
+        <div className="w-full text-justify my-10 text-sm md:text-base lg:text-xl dark:text-white">
           {post.description}
         </div>
       )}

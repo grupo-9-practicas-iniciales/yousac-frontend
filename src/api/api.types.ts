@@ -16,7 +16,7 @@ export interface ApiAuthLoginResponse {
   errors: ApiListError[];
 }
 
-export interface ApiAuthRevalidateResponse extends ApiAuthLoginResponse { }
+export interface ApiAuthRevalidateResponse extends ApiAuthLoginResponse {}
 
 export interface ApiSearchUserRequest {
   idStudent: string;
@@ -31,10 +31,10 @@ export interface ApiSearchUserResponse {
 
 export interface UserInterface {
   idUser: number;
-  idStudent?: string;
+  idStudent: string;
   names: string;
   lastnames: string;
-  email?: string;
+  email: string;
 }
 
 export interface PostInterface {
@@ -42,11 +42,7 @@ export interface PostInterface {
   title: string;
   description: string;
   createdAt: string;
-  user: {
-    idUser: number;
-    names: string;
-    lastnames: string;
-  };
+  user: UserInterface;
   section: {
     idSection: number;
     section: string;
@@ -126,7 +122,6 @@ export interface ApiSearchTeacherResponse {
   msg: string;
   errors: ApiListError[];
   teachers: SearchTeacherInterface[];
-
 }
 
 export interface SearchTeacherInterface {
@@ -140,7 +135,7 @@ export interface SearchTeacherInterface {
       name: string;
       code: string;
     } | null;
-  }[]
+  }[];
 }
 
 export interface ApiRecoveryTokenRquest {
@@ -148,14 +143,67 @@ export interface ApiRecoveryTokenRquest {
 }
 
 export interface ApiRecoveryTokenResponse {
-  ok: boolean,
-  msg: string,
-  token: string,
-  errors: ApiListError[]
+  ok: boolean;
+  msg: string;
+  token: string;
+  errors: ApiListError[];
 }
 
 export interface ApiChangePasswordResponse {
-  ok: boolean,
-  msg: string,
-  errors: ApiListError[]
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+}
+
+export interface CommentInterface {
+  idComment: number;
+  message: string;
+  createdAt: string;
+  user: UserInterface;
+}
+
+export interface ApiGetCommentsResponse {
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+  comments: CommentInterface[];
+}
+
+export interface ApiCreateCommentRequest {
+  idPost: number;
+  message: string;
+}
+
+export interface ApiCreateCommentResponse {
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+  comment: CommentInterface;
+}
+
+export interface ApiCreatePostResponse {
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+  post: PostInterface;
+}
+
+export interface ApiGetUserByIdResponse {
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+  user: UserInterface;
+}
+export interface CourseInterface {
+  idCourse: number;
+  name: string;
+  code: string;
+  credits: number;
+}
+
+export interface ApiGetAprovedCoursesResponse {
+  ok: boolean;
+  msg: string;
+  errors: ApiListError[];
+  aprovedCourses: CourseInterface[];
 }

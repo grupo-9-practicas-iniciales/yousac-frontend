@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import { Button, TextField } from "../components";
 
 import { BubblesDark, BubblesLight } from "../assets";
-import { useAuthStore } from "../hooks/useAuthStore";
+import { useAuthStore, useNewTitle } from "../hooks";
 import { ApiAuthLoginRequest } from "../api";
 
 const formInitialState = {
@@ -16,6 +16,7 @@ type FormState = typeof formInitialState;
 
 export const LoginPage = () => {
   const { startLogin } = useAuthStore();
+  useNewTitle("Iniciar Sesión");
 
   const onSubmit = ({ email, password }: FormState) => {
     const credentials: ApiAuthLoginRequest = { email, password };
