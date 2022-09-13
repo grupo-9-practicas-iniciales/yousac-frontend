@@ -7,21 +7,19 @@ import { VscSettings } from "react-icons/vsc";
 
 import { AvatarProfileButton } from "./AvatarProfileButton";
 
-import { UserInterface } from "../../../api/api.types";
 import { useContentStore, useAuthStore } from "../../../hooks";
+import { User } from "../../../context/auth";
 
 type AvatarProps = {
-  user: UserInterface;
+  user: User;
   isUserOnline?: boolean;
   displayMenu?: boolean;
-  disabledProfileButton?: boolean;
 };
 
 export const Avatar = ({
   user,
   isUserOnline = false,
   displayMenu = false,
-  disabledProfileButton = false,
 }: AvatarProps) => {
   const { startLogout } = useAuthStore();
   const { setSelectedUser } = useContentStore();
