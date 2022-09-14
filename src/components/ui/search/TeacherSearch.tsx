@@ -41,6 +41,7 @@ export const TeacherSearch = () => {
   }, [response]);
 
   const onSubmit = ({ name }: FormState) => {
+    setTeachersFound(null);
     perfomFetch({
       url: `/search?param=teacher`,
       method: "post",
@@ -142,7 +143,7 @@ const TeacherSelects = ({ foundedTeachers }: TeacherSelectsProps) => {
   }, [selectedTeacher]);
 
   return (
-    <div className="grid grid-cols-2 w-full gap-x-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-x-2">
       <Select
         selected={selectedTeacher}
         setSelected={setSelectedTeacher}

@@ -41,6 +41,7 @@ export const CourseSearch = () => {
   }, [response]);
 
   const onSubmit = ({ name }: FormState) => {
+    setCoursesFound(null)
     perfomFetch({
       url: `/search?param=course`,
       method: "post",
@@ -65,7 +66,7 @@ export const CourseSearch = () => {
           </div>
         </Form>
       </Formik>
-      {coursesFound && coursesFound.length > 0 && (
+      {(coursesFound && coursesFound.length > 0) && (
         <CourseSelects foundedCourses={coursesFound} />
       )}
     </>
@@ -97,8 +98,12 @@ const CourseSelects = ({ foundedCourses }: CourseSelectsProps) => {
 
   const selectOptions: SelectOptionsInterface[] =
     selectedCourseObject.sections.map((section) => {
+      let teacherName = "";
+      if (section.teacher) {
+        teacherName = ": " + section.teacher.name
+      }
       return {
-        displayName: section.section,
+        displayName: section.section + teacherName,
         id: section.idSection + "",
       };
     });
@@ -117,8 +122,13 @@ const CourseSelects = ({ foundedCourses }: CourseSelectsProps) => {
 
     const selectOptions: SelectOptionsInterface[] =
       selectedCourseObject.sections.map((section) => {
+        let teacherName = "";
+        if (section.teacher) {
+          teacherName = ": " + section.teacher.name
+
+        }
         return {
-          displayName: section.section,
+          displayName: section.section + teacherName,
           id: section.idSection + "",
         };
       });

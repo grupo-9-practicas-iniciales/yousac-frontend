@@ -27,7 +27,7 @@ export const AppRouter = () => {
       {status === "authenticated" && (
         <Button
           className="h-[40px] lg:h-[45px]
-          w-[40px] lg:w-[45px] fixed right-4 bottom-14 flex justify-center items-center rounded-[50%] my-5"
+          w-[40px] lg:w-[45px] fixed right-4 bottom-14 flex justify-center items-center rounded-[100%] my-5"
           variant="fourth"
         >
           <Link to="/create/post">
