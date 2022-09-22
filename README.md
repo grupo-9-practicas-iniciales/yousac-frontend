@@ -2,6 +2,14 @@
 
 Bienvenido al repositorio de YOUSAC-frontend 🐱‍🏍
 
+## Documentación
+
+POSTMAN: [Postman](https://documenter.getpostman.com/view/19336675/VVJ3zvmc)
+
+ENDPOINTS: [pdf](https://github.com/grupo-9-practicas-iniciales/informe-4-backend/blob/main/Api%20Structure.pdf)
+
+
+
 ## Inicio
 
 Para empezar, puedes clonar el repositorio.
